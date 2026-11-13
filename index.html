@@ -528,6 +528,16 @@
   .nav button svg { width: 22px; height: 22px; flex-shrink: 0; }
   .nav button span, .nav button { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .nav button::before { left: 18% !important; right: 18% !important; }
+  /* Notifications + pastilles */
+  .notif-invite { background: #fff; border: 1.5px solid var(--vert); border-radius: 8px; padding: 12px; display: flex; gap: 12px; color: var(--vert-fonce); }
+  .notif-invite svg { flex-shrink: 0; margin-top: 2px; }
+  .notif-corps { display: flex; flex-direction: column; gap: 6px; color: #1C1C1A; font-size: 14px; line-height: 1.4; }
+  .notif-corps b { font-family: var(--serif); font-weight: 400; font-size: 18px; color: var(--vert-fonce); }
+  .notif-boutons { display: flex; gap: 10px; margin-top: 4px; }
+  .notif-boutons button { height: 42px; padding: 0 18px; border-radius: 6px; border: 0; background: var(--grad); color: #fff; font-weight: 600; font-size: 15px; cursor: pointer; }
+  .notif-boutons .plus-tard { background: #fff; color: var(--vert-fonce); border: 1.5px solid #CFCFDA; }
+  .pastille-nb { position: absolute; top: 4px; left: calc(50% + 6px); min-width: 18px; height: 18px; padding: 0 5px; border-radius: 99px;
+    background: #D92D20; color: #fff; font: 700 11px/18px Inter, sans-serif; text-align: center; overflow: visible !important; }
   .entete3, .entete { padding-top: max(10px, env(safe-area-inset-top)); }
 </style>
 </head>
@@ -574,6 +584,17 @@
       </div>
     </header>
     <main class="contenu avec-nav">
+      <section class="notif-invite" id="notif-invite" hidden aria-label="Notifications">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
+        <div class="notif-corps">
+          <b>Activer les notifications</b>
+          <span id="notif-texte"></span>
+          <div class="notif-boutons">
+            <button type="button" id="notif-activer">Activer</button>
+            <button type="button" id="notif-plus-tard" class="plus-tard">Plus tard</button>
+          </div>
+        </div>
+      </section>
       <div id="erreur-cal" class="message erreur" role="alert" hidden></div>
 
       <div class="section" id="titre-terminees">Terminés</div>
@@ -1191,6 +1212,7 @@
   }
 
   document.querySelectorAll('.nav button').forEach(b => b.addEventListener('click', () => {
+    setTimeout(() => majCompteurs(), 1500);
     montrer(b.dataset.vue);
     if (b.dataset.vue === 'vue-calendrier') chargerCalendrier();
     if (b.dataset.vue === 'vue-factures') ouvrirFactures();
@@ -1211,6 +1233,7 @@
                      'Trésorier': 'Espace Trésorerie', 'Président': 'Espace Président' }[s.role] || 'Espace membre';
     document.querySelectorAll('[data-espace]').forEach(e => { e.textContent = espace; });
     $('onglet-factures').hidden = s.role === 'Membre';
+    setTimeout(() => { demarrerNotifications(s); demarrerCompteurs(); }, 300);
     $('lbl-nav-sponsors').textContent = 'Sponsors';
     $('btn-ajouter').hidden = true;
     $('onglet-tresorerie').hidden = !s.voitChiffres;
@@ -1264,6 +1287,9 @@
 
   document.querySelectorAll('[data-deconnexion]').forEach(b => b.addEventListener('click', () => {
     const j = lireJeton();
+    try { if (osPret) OneSignalDeferred.push((OS) => OS.logout()); } catch (e) {}
+    clearInterval(compteursMinuteur);
+    if ('clearAppBadge' in navigator) navigator.clearAppBadge().catch(() => {});
     oublierJeton(); session = null; ref = null; calCache = null; tresCache = null; mesFacturesCache = null; refFactureAJour = false; feteFiltre = ''; spData = null; spFiltre = 'tous'; sondData = null;
     if (j) serveur('deconnexion', j).catch(() => {});
     montrer('vue-connexion');
@@ -2849,6 +2875,89 @@
     catch (err) { if (!sessionPerdue(err)) message($('erreur-sc'), texteErreur(err)); }
     finally { $('sc-publier').disabled = false; }
   });
+
+  // ---------- Notifications (OneSignal) ----------
+  const BASE = location.pathname.replace(/[^/]*$/, '');          // ex. « /festivites/ »
+  let osPret = false;
+  function estIOS() { return /iPhone|iPad|iPod/.test(navigator.userAgent); }
+  function estInstallee() { return navigator.standalone === true || matchMedia('(display-mode: standalone)').matches; }
+
+  function demarrerNotifications(s) {
+    if (DANS_GOOGLE || !s.notifAppId || !('serviceWorker' in navigator) || location.protocol !== 'https:') { majBoutonNotif(); return; }
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    if (!document.getElementById('sdk-onesignal')) {
+      const sc = document.createElement('script');
+      sc.id = 'sdk-onesignal'; sc.src = 'https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js'; sc.defer = true;
+      document.head.appendChild(sc);
+    }
+    OneSignalDeferred.push(async (OneSignal) => {
+      try {
+        if (!osPret) {
+          await OneSignal.init({
+            appId: s.notifAppId,
+            serviceWorkerPath: BASE.slice(1) + 'sw.js',
+            serviceWorkerParam: { scope: BASE },
+            notifyButton: { enable: false }
+          });
+          OneSignal.Notifications.addEventListener('permissionChange', majBoutonNotif);
+          osPret = true;
+        }
+        if (s.identifiant) await OneSignal.login(s.identifiant);   // pour que le serveur sache à qui envoyer
+        OneSignal.User.addTag('role', s.role);
+      } catch (e) { /* notifications indisponibles : l'appli marche quand même */ }
+      majBoutonNotif();
+    });
+  }
+
+  function majBoutonNotif() {
+    const zone = $('notif-invite');
+    if (!zone) return;
+    let refuse = false;
+    try { refuse = localStorage.getItem('notif-plus-tard') === '1'; } catch (e) {}
+    const supporte = 'Notification' in window;
+    const permission = supporte ? Notification.permission : 'default';
+    const iosNonInstallee = estIOS() && !estInstallee();
+    zone.hidden = DANS_GOOGLE || refuse || permission === 'granted' || permission === 'denied' || (!osPret && !iosNonInstallee);
+    $('notif-texte').textContent = iosNonInstallee
+      ? 'Sur iPhone, installe d’abord l’appli : bouton Partager > « Sur l’écran d’accueil ». Ouvre-la ensuite depuis l’icône pour activer les notifications.'
+      : 'Reçois une notification pour les nouveaux évènements, sondages, comptes rendus et tâches.';
+    $('notif-activer').hidden = iosNonInstallee;
+  }
+  $('notif-activer').addEventListener('click', async () => {
+    try { await OneSignal.Notifications.requestPermission(); } catch (e) {}
+    majBoutonNotif();
+  });
+  $('notif-plus-tard').addEventListener('click', () => {
+    try { localStorage.setItem('notif-plus-tard', '1'); } catch (e) {}
+    majBoutonNotif();
+  });
+
+  // ---------- Pastilles (ce qui attend la personne) ----------
+  let compteursMinuteur = null, dernierCompteurs = 0;
+  async function majCompteurs(force) {
+    if (!session || (!force && Date.now() - dernierCompteurs < 15000)) return;
+    dernierCompteurs = Date.now();
+    try {
+      const c = await serveur('compteurs', lireJeton());
+      const cibles = { 'vue-calendrier': c.calendrier, 'vue-sondages': c.sondages, 'vue-tresorerie': c.tresorerie, 'vue-sponsors': c.sponsors };
+      document.querySelectorAll('.nav button').forEach(b => {
+        let p = b.querySelector('.pastille-nb');
+        const n = cibles[b.dataset.vue] || 0;
+        if (!p) { p = document.createElement('span'); p.className = 'pastille-nb'; b.appendChild(p); }
+        p.textContent = n > 9 ? '9+' : n;
+        p.hidden = !n;
+        p.setAttribute('aria-label', n + ' à voir');
+      });
+      const total = Object.values(c).reduce((a, b) => a + b, 0);
+      if ('setAppBadge' in navigator) { total ? navigator.setAppBadge(total).catch(() => {}) : navigator.clearAppBadge().catch(() => {}); }
+    } catch (e) { /* pas grave : on réessaiera */ }
+  }
+  function demarrerCompteurs() {
+    clearInterval(compteursMinuteur);
+    majCompteurs(true);
+    compteursMinuteur = setInterval(() => { if (document.visibilityState === 'visible') majCompteurs(); }, 120000);
+  }
+  document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') majCompteurs(); });
 
   // ---------- Au démarrage : déjà connecté ? ----------
   const jeton = lireJeton();

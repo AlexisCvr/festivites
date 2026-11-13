@@ -1,6 +1,10 @@
-// Service worker minimal : permet d'installer l'appli sur l'écran d'accueil.
-// Il garde la page en mémoire pour un démarrage rapide, mais ne garde jamais les données du serveur.
-const CACHE = 'festivites-v1';
+// Service worker de l'appli : installation sur l'écran d'accueil + notifications (OneSignal).
+try {
+  importScripts('https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.sw.js');   // reçoit et affiche les notifications
+} catch (e) { /* hors ligne au premier lancement : l'appli marche, les notifications viendront ensuite */ }
+
+// La page est gardée en mémoire pour un démarrage rapide ; les données du serveur jamais.
+const CACHE = 'festivites-v2';
 const FICHIERS = ['./', './index.html', './manifest.webmanifest', './icones/icone-192.png', './icones/icone-512.png'];
 
 self.addEventListener('install', (e) => {
@@ -12,8 +16,7 @@ self.addEventListener('activate', (e) => {
 });
 self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
-  if (e.request.method !== 'GET' || url.origin !== location.origin) return;   // le serveur Google n'est jamais mis en cache
-  // Réseau d'abord (toujours la dernière version), mémoire si pas de réseau.
+  if (e.request.method !== 'GET' || url.origin !== location.origin) return;   // serveur Google et OneSignal : jamais en cache
   e.respondWith(
     fetch(e.request).then((r) => {
       const copie = r.clone();
