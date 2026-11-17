@@ -538,6 +538,84 @@
   .notif-boutons .plus-tard { background: #fff; color: var(--vert-fonce); border: 1.5px solid #CFCFDA; }
   .pastille-nb { position: absolute; top: 4px; left: calc(50% + 6px); min-width: 18px; height: 18px; padding: 0 5px; border-radius: 99px;
     background: #D92D20; color: #fff; font: 700 11px/18px Inter, sans-serif; text-align: center; overflow: visible !important; }
+  /* En-tête v4 (calendrier) : logo + Prénom Nom, titre, bouton Déconnexion */
+  .entete4 { background: var(--grad); color: #fff; padding: max(8px, env(safe-area-inset-top)) 16px 14px 9px; display: flex; flex-direction: column; gap: 12px; }
+  .e4-haut { display: flex; align-items: center; gap: 14px; }
+  .e4-logo { width: 54px; height: 54px; flex-shrink: 0; border-radius: 10px; background: rgba(255, 255, 255, .26); display: flex;
+    align-items: center; justify-content: center; overflow: hidden; }
+  .e4-logo img { width: 90%; height: auto; display: block; }
+  .e4-nom { font-family: var(--serif); font-size: clamp(20px, 6.2vw, 26px); line-height: 1.1; overflow-wrap: anywhere; }
+  .e4-titre { margin: 0 0 0 6px; font-family: var(--serif); font-weight: 400; font-size: clamp(20px, 6.2vw, 26px); line-height: 1.1; }
+  .e4-actions { display: flex; justify-content: center; align-items: center; gap: 12px; padding: 5px 16px 0; }
+  .e4-deconnexion { min-width: 116px; height: 36px; padding: 0 18px; border: 0; border-radius: 8px; background: #E00000; color: #fff;
+    font: 500 16px Inter, sans-serif; cursor: pointer; }
+  .e4-deconnexion:focus-visible, .e4-ajouter:focus-visible { outline: 3px solid var(--vert-fonce); outline-offset: 2px; }
+  .e4-ajouter { width: 40px; height: 40px; border: 0; border-radius: 99px; background: var(--grad); color: #fff; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+  .carte3.passee .c3-corps { justify-content: center; }
+  .case-reunion { display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border: 1px solid var(--bord, #D9D6CE); border-radius: 12px; background: #fff; cursor: pointer; }
+  .case-reunion input { width: 22px; height: 22px; margin: 2px 0 0; accent-color: #2E2BB8; flex-shrink: 0; }
+  .case-reunion span { display: flex; flex-direction: column; gap: 2px; }
+  .case-reunion small { color: #5F5E58; font-size: 13px; }
+  .case-reunion:has(input:disabled) { opacity: .75; cursor: default; }
+  /* Calendrier bureau : bouton + flottant, réunions de bureau dorées, suivi des réponses */
+  .e4-ajouter.flottant { position: fixed; z-index: 6; width: 58px; height: 58px; right: max(16px, calc(50% - 224px));
+    bottom: calc(84px + env(safe-area-inset-bottom)); box-shadow: 0 6px 18px rgba(20, 18, 90, .45); }
+  .e4-ajouter.flottant svg { width: 28px; height: 28px; }
+  #vue-calendrier .contenu.avec-nav { padding-bottom: 170px; }
+  .carte3.bureau { box-shadow: inset 6px 0 0 #C9A227, 0 4px 12px rgba(10, 10, 40, .16); padding-left: 14px; }
+  .carte3.bureau .c3-tag { background: #F6E7B0; color: #6B5200; }
+  .c3-suivi { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; font-size: 14px; font-weight: 600; margin-top: 2px; }
+  .c3-suivi .sv b { font-weight: 800; }
+  .c3-suivi .ok { color: var(--present); }
+  .c3-suivi .ko { color: var(--absent); }
+  .c3-suivi .att { color: #6B6A75; }
+  .c3-suivi .taches { padding: 2px 8px; border-radius: 99px; background: #E8E7FB; color: #2E2BB8; font-size: 12.5px; }
+  .so-pastille { display: inline-flex; align-items: center; justify-content: center; min-width: 22px; height: 22px; padding: 0 6px; margin-left: 6px;
+    border-radius: 99px; background: #E00000; color: #fff; font: 700 12px Inter, sans-serif; vertical-align: middle; letter-spacing: 0; }
+  .sondage.bureau { box-shadow: inset 6px 0 0 #C9A227, 0 4px 12px rgba(10, 10, 40, .16); }
+  .sondage .c3-tag { background: #F6E7B0; color: #6B5200; }
+  /* Factures : plusieurs photos, remboursement */
+  .f-photos { display: flex; flex-wrap: wrap; gap: 10px; margin-top: -4px; }
+  .f-vignette { position: relative; width: 72px; height: 72px; border-radius: 10px; overflow: hidden; background: #fff; border: 1px solid #D9D6CE; }
+  .f-vignette img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .f-vignette .pdf { display: flex; width: 100%; height: 100%; align-items: center; justify-content: center; font-weight: 700; color: #2E2BB8; }
+  .f-vignette .retirer { position: absolute; top: 3px; right: 3px; width: 26px; height: 26px; border: 0; border-radius: 99px;
+    background: rgba(0, 0, 0, .65); color: #fff; font-size: 18px; line-height: 1; cursor: pointer; }
+  .rembours { display: block; color: #9A5B00; font-weight: 600; }
+  .rembours.ok { color: var(--present); }
+  .v-nav { display: flex; align-items: center; gap: 18px; color: #fff; font-weight: 600; }
+  .v-nav button { width: 44px; height: 44px; border: 0; border-radius: 99px; background: #fff; font-size: 26px; line-height: 1; cursor: pointer; }
+  .v-nav button:disabled { opacity: .35; cursor: default; }
+  #t-rembourser .bas .valider { flex: 1; width: 100%; white-space: nowrap; }
+  .spf-nom { margin: 4px 0 2px; font-size: 24px; }
+  /* Sponsors : RIB du comité */
+  .rib { background: #fff; border-radius: 10px; box-shadow: 0 4px 12px rgba(10, 10, 40, .12); padding: 14px; display: flex; flex-direction: column; gap: 10px;
+    border-left: 6px solid #2E2BB8; }
+  .rib h3 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: 20px; }
+  .rib p { margin: 4px 0 0; font-size: 14px; color: #3d3c44; overflow-wrap: anywhere; }
+  .rib-actions { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+  .rib-actions .petit { height: 44px; font-size: 17px; padding: 0 16px; }
+  .rib-form { display: flex; flex-direction: column; gap: 6px; }
+  .rib-form .etiquette { margin-top: 6px; }
+  .puces > select { width: 100%; }
+  #r-tenues { margin-top: 8px; }
+  /* Trésorerie : saison, comparaison, export, fond de caisse */
+  .bilan-total div.comparaison { grid-column: 1 / -1; background: none; font-size: 13px; opacity: .9; padding: 0 4px; }
+  .comparaison-note { color: #3d3c44 !important; }
+  .b-annee { color: #6B6A75; font-size: .8em; }
+  .b-export { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .b-export .secondaire { height: 46px; font-size: 15px; }
+  .b-fond h3 { margin: 0 0 4px; font-family: var(--serif); font-weight: 400; font-size: 20px; }
+  .b-fonds { display: flex; flex-direction: column; gap: 6px; margin-top: 8px; }
+  .b-fonds .ligne-recette { gap: 8px; }
+  #t-annee { margin-bottom: 10px; }
+  /* Payé sur place */
+  #rc-depenses { display: flex; flex-direction: column; gap: 10px; padding: 10px; }
+  .dep-ligne { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; align-items: center; padding-bottom: 10px; border-bottom: 1px solid #ECEAE3; }
+  .dep-ligne:last-child { border-bottom: 0; padding-bottom: 0; }
+  .dep-ligne .dep-libelle { grid-column: 1 / -1; }
+  #rc-ajout-depense { margin-top: 8px; }
+  #rc-total-dep { color: var(--absent); }
   .entete3, .entete { padding-top: max(10px, env(safe-area-inset-top)); }
 </style>
 </head>
@@ -573,17 +651,18 @@
 
   <!-- ===================== CALENDRIER (bureau) ===================== -->
   <div id="vue-calendrier" hidden>
-    <header class="entete3">
-      <div class="e3-haut">
-        <div class="e3-tuiles"><span class="e3-tuile"><img data-logo alt=""></span><span class="e3-tuile" data-initiales aria-hidden="true"></span></div>
-        <span class="e3-espace" data-espace></span>
+    <header class="entete4">
+      <div class="e4-haut">
+        <span class="e4-logo"><img data-logo alt=""></span>
+        <span class="e4-nom" data-nom></span>
       </div>
-      <div class="e3-bas">
-        <h1 class="e3-titre">Calendrier</h1>
-        <div class="e3-actions"><button type="button" class="e3-btn rond" id="btn-ajouter" aria-label="Ajouter un évènement" hidden><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button><button type="button" class="e3-btn" data-deconnexion aria-label="Se déconnecter"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4"/><path d="M14 8l4 4-4 4M18 12H9"/></svg></button></div>
-      </div>
+      <h1 class="e4-titre">Calendrier - <span data-espace></span></h1>
     </header>
-    <main class="contenu avec-nav">
+    <div class="e4-actions">
+      <button type="button" class="e4-deconnexion" data-deconnexion>Déconnexion</button>
+      <button type="button" class="e4-ajouter flottant" id="btn-ajouter" aria-label="Ajouter un évènement" hidden><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+    </div>
+    <main class="contenu avec-nav" style="padding-top:12px">
       <section class="notif-invite" id="notif-invite" hidden aria-label="Notifications">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>
         <div class="notif-corps">
@@ -609,15 +688,12 @@
 
   <!-- ===================== PAGE D'UN ÉVÈNEMENT ===================== -->
   <div id="vue-evenement" hidden>
-    <header class="entete3">
-      <div class="e3-haut">
-        <div class="e3-tuiles"><span class="e3-tuile"><img data-logo alt=""></span><span class="e3-tuile" data-initiales aria-hidden="true"></span></div>
-        <span class="e3-espace" data-espace></span>
+    <header class="entete4">
+      <div class="e4-haut">
+        <span class="e4-logo"><img data-logo alt=""></span>
+        <span class="e4-nom" data-nom></span>
       </div>
-      <div class="e3-bas">
-        <h1 class="onglet-titre cache">Évènement</h1>
-        <div class="e3-actions"><button type="button" class="e3-btn" data-deconnexion aria-label="Se déconnecter"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4"/><path d="M14 8l4 4-4 4M18 12H9"/></svg></button></div>
-      </div>
+      <h1 class="e4-titre">Calendrier - <span data-espace></span></h1>
     </header>
     <main class="contenu avec-nav">
       <div id="erreur-evt" class="message erreur" role="alert" hidden></div>
@@ -637,15 +713,12 @@
 
   <!-- ===================== SONDAGES ===================== -->
   <div id="vue-sondages" hidden>
-    <header class="entete3">
-      <div class="e3-haut">
-        <div class="e3-tuiles"><span class="e3-tuile"><img data-logo alt=""></span><span class="e3-tuile" data-initiales aria-hidden="true"></span></div>
-        <span class="e3-espace" data-espace></span>
+    <header class="entete4">
+      <div class="e4-haut">
+        <span class="e4-logo"><img data-logo alt=""></span>
+        <span class="e4-nom" data-nom></span>
       </div>
-      <div class="e3-bas">
-        <h1 class="e3-titre">Sondages</h1>
-        <div class="e3-actions"><button type="button" class="e3-btn" data-deconnexion aria-label="Se déconnecter"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4"/><path d="M14 8l4 4-4 4M18 12H9"/></svg></button></div>
-      </div>
+      <h1 class="e4-titre">Sondages - <span data-espace></span></h1>
     </header>
     <main class="contenu avec-nav">
       <button type="button" class="btn-ligne" id="so-creer" hidden>
@@ -653,7 +726,9 @@
         Créer un sondage
       </button>
       <div id="erreur-sond" class="message erreur" role="alert" hidden></div>
-      <div class="section">En cours</div>
+      <div class="section" id="so-titre-avoter" hidden>À voter <span class="so-pastille" id="so-nb-avoter"></span></div>
+      <div class="liste" id="so-avoter"></div>
+      <div class="section" id="so-titre-encours">En cours</div>
       <div class="liste" id="so-encours"><p class="vide">Chargement…</p></div>
       <div class="section" id="so-titre-termines" hidden>Terminés</div>
       <div class="liste" id="so-termines"></div>
@@ -662,15 +737,12 @@
 
   <!-- ===================== CRÉER UN SONDAGE (bureau) ===================== -->
   <div id="vue-sondage-creer" hidden>
-    <header class="entete3">
-      <div class="e3-haut">
-        <div class="e3-tuiles"><span class="e3-tuile"><img data-logo alt=""></span><span class="e3-tuile" data-initiales aria-hidden="true"></span></div>
-        <span class="e3-espace" data-espace></span>
+    <header class="entete4">
+      <div class="e4-haut">
+        <span class="e4-logo"><img data-logo alt=""></span>
+        <span class="e4-nom" data-nom></span>
       </div>
-      <div class="e3-bas">
-        <h1 class="e3-titre">Nouveau sondage</h1>
-        <div class="e3-actions"><button type="button" class="e3-btn" data-deconnexion aria-label="Se déconnecter"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4"/><path d="M14 8l4 4-4 4M18 12H9"/></svg></button></div>
-      </div>
+      <h1 class="e4-titre">Sondages - <span data-espace></span></h1>
     </header>
     <form class="ajout" id="form-sondage" novalidate>
       <div class="bloc">
@@ -683,6 +755,7 @@
         <button type="button" class="btn-ligne" id="sc-plus">+ Ajouter un choix</button>
       </div>
       <label class="interrupteur"><input id="sc-plusieurs" type="checkbox"> Plusieurs réponses possibles</label>
+      <label class="interrupteur"><input id="sc-bureau" type="checkbox"> Réservé au bureau (les membres ne le voient pas)</label>
       <div class="bloc">
         <label class="etiquette" for="sc-fin">Fin du sondage (facultatif)</label>
         <input id="sc-fin" class="saisie petite" type="date">
@@ -721,15 +794,21 @@
       <div class="bloc">
         <label class="etiquette" for="r-tenue">Tenue</label>
         <input id="r-tenue" class="saisie petite" type="text" placeholder="Ex. : Maillot rose" maxlength="60">
-        <div class="puces" id="r-tenues" aria-label="Tenues déjà utilisées"></div>
+        <select class="saisie petite" id="r-tenues" aria-label="Reprendre une tenue déjà utilisée" hidden></select>
       </div>
       <div class="bloc">
-        <span class="etiquette" id="lbl-concerne">Membre concerné</span>
-        <div class="choix" role="group" aria-labelledby="lbl-concerne">
-          <button type="button" class="opt bureau" data-type="Réunion bureau" aria-pressed="true">Bureau</button>
-          <button type="button" class="opt membre" data-type="Événement" aria-pressed="false">Membre</button>
-        </div>
+        <label class="etiquette" for="r-type">Membre concerné</label>
+        <select class="saisie petite" id="r-type">
+          <option value="Réunion bureau">Bureau seulement</option>
+          <option value="Événement">Tous les membres</option>
+        </select>
         <p class="aide" id="aide-type">Visible seulement par le bureau.</p>
+      </div>
+      <div class="bloc">
+        <label class="case-reunion" for="r-reunion">
+          <input type="checkbox" id="r-reunion">
+          <span><b>C’est une réunion</b><small id="aide-reunion">Un compte rendu pourra être déposé par la secrétaire.</small></span>
+        </label>
       </div>
       <div id="erreur-form" class="message erreur" role="alert" hidden></div>
       <div class="actions">
@@ -742,15 +821,12 @@
 
   <!-- ===================== FACTURES (bureau + membres) ===================== -->
   <div id="vue-factures" hidden>
-    <header class="entete3">
-      <div class="e3-haut">
-        <div class="e3-tuiles"><span class="e3-tuile"><img data-logo alt=""></span><span class="e3-tuile" data-initiales aria-hidden="true"></span></div>
-        <span class="e3-espace" data-espace></span>
+    <header class="entete4">
+      <div class="e4-haut">
+        <span class="e4-logo"><img data-logo alt=""></span>
+        <span class="e4-nom" data-nom></span>
       </div>
-      <div class="e3-bas">
-        <h1 class="e3-titre">Factures</h1>
-        <div class="e3-actions"><button type="button" class="e3-btn" data-deconnexion aria-label="Se déconnecter"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4"/><path d="M14 8l4 4-4 4M18 12H9"/></svg></button></div>
-      </div>
+      <h1 class="e4-titre">Factures - <span data-espace></span></h1>
     </header>
     <main class="contenu avec-nav">
       <form id="form-facture" class="ajout" style="padding: 8px 0 0" novalidate>
@@ -762,8 +838,9 @@
             <strong id="f-ticket-titre">Photo du ticket</strong>
             <span class="sous" id="f-ticket-sous">Prendre une photo ou choisir un PDF</span>
           </span>
-          <input id="f-ticket" type="file" accept="image/*,application/pdf">
+          <input id="f-ticket" type="file" accept="image/*,application/pdf" multiple>
         </label>
+        <div class="f-photos" id="f-photos" hidden></div>
 
         <div class="bloc">
           <label class="etiquette" for="f-fournisseur">Magasin</label>
@@ -788,6 +865,11 @@
           <select class="saisie petite" id="f-fetes"></select>
         </div>
 
+        <label class="case-reunion" for="f-rembourser">
+          <input type="checkbox" id="f-rembourser">
+          <span><b>J’ai payé avec mon argent</b><small>La trésorière devra me rembourser.</small></span>
+        </label>
+
         <div id="erreur-facture" class="message erreur" role="alert" hidden></div>
         <div id="ok-facture" class="message info" role="status" hidden></div>
         <button type="submit" class="bouton" id="btn-envoyer" style="font-size:24px">Envoyer à la trésorière</button>
@@ -800,21 +882,27 @@
 
   <!-- ===================== TRÉSORERIE (trésorier + président) ===================== -->
   <div id="vue-tresorerie" hidden>
-    <header class="entete3">
-      <div class="e3-haut">
-        <div class="e3-tuiles"><span class="e3-tuile"><img data-logo alt=""></span><span class="e3-tuile" data-initiales aria-hidden="true"></span></div>
-        <span class="e3-espace" data-espace></span>
+    <header class="entete4">
+      <div class="e4-haut">
+        <span class="e4-logo"><img data-logo alt=""></span>
+        <span class="e4-nom" data-nom></span>
       </div>
-      <div class="e3-bas">
-        <h1 class="e3-titre">Trésorerie</h1>
-        <div class="e3-actions"><button type="button" class="e3-btn" data-deconnexion aria-label="Se déconnecter"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4"/><path d="M14 8l4 4-4 4M18 12H9"/></svg></button></div>
-      </div>
+      <h1 class="e4-titre">Trésorerie - <span data-espace></span></h1>
     </header>
     <main class="contenu avec-nav">
       <div id="erreur-tres" class="message erreur" role="alert" hidden></div>
 
       <div class="section" style="margin-top:6px">À valider <span class="compteur" id="t-nb">0</span></div>
       <div class="liste" id="t-attente"><p class="vide">Chargement…</p></div>
+
+      <div id="t-bloc-rembourser" hidden>
+        <div class="section">À rembourser <span class="compteur" id="t-nb-remb">0</span></div>
+        <div class="liste" id="t-rembourser"></div>
+      </div>
+
+      <div class="section">Bilan de la saison</div>
+      <select class="saisie petite" id="t-annee" aria-label="Année"></select>
+      <section class="bilan-total" id="t-saison" aria-live="polite"></section>
 
       <div class="section">Bilan par manifestation</div>
       <div class="liste" id="t-bilans"><p class="vide">Chargement…</p></div>
@@ -832,19 +920,27 @@
 
   <!-- ===================== BILAN D'UNE FÊTE ===================== -->
   <div id="vue-bilan" hidden>
-    <header class="entete3">
-      <div class="e3-haut">
-        <div class="e3-tuiles"><span class="e3-tuile"><img data-logo alt=""></span><span class="e3-tuile" data-initiales aria-hidden="true"></span></div>
-        <span class="e3-espace" data-espace></span>
+    <header class="entete4">
+      <div class="e4-haut">
+        <span class="e4-logo"><img data-logo alt=""></span>
+        <span class="e4-nom" data-nom></span>
       </div>
-      <div class="e3-bas">
-        <h1 class="e3-titre" id="b-titre">Bilan</h1>
-        <div class="e3-actions"><button type="button" class="e3-btn" data-deconnexion aria-label="Se déconnecter"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4"/><path d="M14 8l4 4-4 4M18 12H9"/></svg></button></div>
-      </div>
+      <h1 class="e4-titre">Trésorerie - <span data-espace></span></h1>
     </header>
     <main class="contenu">
+      <h2 class="titre-bloc spf-nom"><span id="b-titre">Bilan</span> <span class="b-annee" id="b-annee"></span></h2>
       <div id="erreur-bilan" class="message erreur" role="alert" hidden></div>
       <section class="bilan-total" id="b-total" aria-live="polite"></section>
+      <div class="b-export">
+        <button type="button" class="secondaire" id="b-pdf">Télécharger en PDF</button>
+        <button type="button" class="secondaire" id="b-csv">Télécharger en tableur</button>
+      </div>
+      <section class="encadre b-fond" id="b-fond">
+        <h3>Fond de caisse</h3>
+        <p class="aide" id="b-fond-texte">La somme de départ de la caisse est déduite des entrées.</p>
+        <div class="b-fonds" id="b-fonds"></div>
+        <div id="erreur-fond" class="message erreur" role="alert" hidden></div>
+      </section>
       <button type="button" class="btn-ligne" id="b-saisir">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
         Saisir le chiffre d’affaires d’une journée
@@ -867,17 +963,15 @@
 
   <!-- ===================== NOUVELLE RECETTE (trésorière) ===================== -->
   <div id="vue-recette" hidden>
-    <header class="entete3">
-      <div class="e3-haut">
-        <div class="e3-tuiles"><span class="e3-tuile"><img data-logo alt=""></span><span class="e3-tuile" data-initiales aria-hidden="true"></span></div>
-        <span class="e3-espace" data-espace></span>
+    <header class="entete4">
+      <div class="e4-haut">
+        <span class="e4-logo"><img data-logo alt=""></span>
+        <span class="e4-nom" data-nom></span>
       </div>
-      <div class="e3-bas">
-        <h1 class="e3-titre">Chiffre d’affaires</h1>
-        <div class="e3-actions"><button type="button" class="e3-btn" data-deconnexion aria-label="Se déconnecter"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4"/><path d="M14 8l4 4-4 4M18 12H9"/></svg></button></div>
-      </div>
+      <h1 class="e4-titre">Trésorerie - <span data-espace></span></h1>
     </header>
     <form class="ajout" id="form-recette" novalidate>
+      <h2 class="titre-bloc spf-nom">Chiffre d’affaires</h2>
       <div class="bloc">
         <span class="etiquette" id="lbl-rc-fete">Pour quelle fête ?</span>
         <div class="puces" id="rc-fetes" role="group" aria-labelledby="lbl-rc-fete"></div>
@@ -887,8 +981,8 @@
         <input id="rc-date" class="saisie petite" type="date">
       </div>
       <div class="bloc">
-        <span class="etiquette" id="lbl-rc-moment">Service</span>
-        <div class="puces" id="rc-moments" role="group" aria-labelledby="lbl-rc-moment"></div>
+        <label class="etiquette" for="rc-moments">Service</label>
+        <select class="saisie petite" id="rc-moments"></select>
         <p class="aide" id="rc-deja" hidden></p>
       </div>
       <div class="deja-saisis" id="rc-recap" hidden></div>
@@ -900,7 +994,19 @@
           <button type="button" id="rc-ajouter-cat">Ajouter</button>
         </div>
         <div id="rc-info-cat" class="message erreur" role="alert" hidden></div>
-        <div class="ca-total"><span>Total du service</span><b id="rc-total">0,00 €</b></div>
+        <div class="ca-total"><span>Total des entrées</span><b id="rc-total">0,00 €</b></div>
+      </div>
+      <div class="bloc">
+        <label class="etiquette" for="rc-fond">Fond de caisse de ce service (facultatif)</label>
+        <input id="rc-fond" class="saisie petite" type="text" inputmode="decimal" placeholder="0,00 €">
+        <p class="aide">La somme mise dans la caisse au départ. Elle est déduite des entrées. Tu peux en saisir un à chaque service.</p>
+      </div>
+      <div class="bloc">
+        <span class="etiquette">Payé sur place (facultatif)</span>
+        <p class="aide">Ce qui a été payé pendant la fête, par exemple la manade ou la sono. C'est compté dans les sorties du bilan.</p>
+        <div class="ca-lignes" id="rc-depenses" hidden></div>
+        <button type="button" class="btn-ligne" id="rc-ajout-depense">+ Ajouter une dépense payée sur place</button>
+        <div class="ca-total" id="rc-bloc-total-dep" hidden><span>Total payé sur place</span><b id="rc-total-dep" class="moins-r">0,00 €</b></div>
       </div>
       <div class="bloc">
         <label class="etiquette" for="rc-note">Note (facultatif)</label>
@@ -976,15 +1082,12 @@
 
   <!-- ===================== SPONSORS ===================== -->
   <div id="vue-sponsors" hidden>
-    <header class="entete3">
-      <div class="e3-haut">
-        <div class="e3-tuiles"><span class="e3-tuile"><img data-logo alt=""></span><span class="e3-tuile" data-initiales aria-hidden="true"></span></div>
-        <span class="e3-espace" data-espace></span>
+    <header class="entete4">
+      <div class="e4-haut">
+        <span class="e4-logo"><img data-logo alt=""></span>
+        <span class="e4-nom" data-nom></span>
       </div>
-      <div class="e3-bas">
-        <h1 class="e3-titre">Sponsors</h1>
-        <div class="e3-actions"><button type="button" class="e3-btn" data-deconnexion aria-label="Se déconnecter"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4"/><path d="M14 8l4 4-4 4M18 12H9"/></svg></button></div>
-      </div>
+      <h1 class="e4-titre">Sponsors - <span data-espace></span></h1>
     </header>
     <main class="contenu avec-nav">
       <button type="button" class="btn-ligne" id="sp-ajouter" hidden>
@@ -992,6 +1095,38 @@
         Ajouter un sponsor
       </button>
       <div id="erreur-sp" class="message erreur" role="alert" hidden></div>
+
+      <section class="rib" id="sp-rib" hidden>
+        <div class="rib-haut">
+          <div>
+            <h3>RIB du comité</h3>
+            <p id="sp-rib-texte"></p>
+          </div>
+        </div>
+        <div class="rib-actions">
+          <button type="button" class="bouton petit" id="sp-rib-partager">Partager le RIB</button>
+          <button type="button" class="secondaire petit" id="sp-rib-copier">Copier</button>
+        </div>
+        <button type="button" class="lien-noms" id="sp-rib-modifier" hidden>RIB et coordonnées du comité</button>
+        <form id="form-comite" class="rib-form" hidden novalidate>
+          <label class="etiquette" for="cm-nom">Nom du comité</label>
+          <input id="cm-nom" class="saisie petite" maxlength="120">
+          <label class="etiquette" for="cm-adresse">Adresse (pour les factures)</label>
+          <textarea id="cm-adresse" class="saisie" maxlength="300" rows="3" placeholder="N° et rue&#10;34660 Cournonterral"></textarea>
+          <label class="etiquette" for="cm-identifiant">SIRET ou n° RNA (facultatif)</label>
+          <input id="cm-identifiant" class="saisie petite" maxlength="60">
+          <label class="etiquette" for="cm-email">E-mail du comité (copie des factures, réponses)</label>
+          <input id="cm-email" class="saisie petite" type="email" maxlength="120" autocapitalize="none">
+          <label class="etiquette" for="cm-titulaire">Titulaire du compte</label>
+          <input id="cm-titulaire" class="saisie petite" maxlength="120">
+          <label class="etiquette" for="cm-iban">IBAN</label>
+          <input id="cm-iban" class="saisie petite" maxlength="42" autocapitalize="characters" placeholder="FR76 …">
+          <label class="etiquette" for="cm-bic">BIC</label>
+          <input id="cm-bic" class="saisie petite" maxlength="11" autocapitalize="characters">
+          <div id="erreur-cm" class="message erreur" role="alert" hidden></div>
+          <button type="submit" class="bouton" id="cm-enregistrer">Enregistrer</button>
+        </form>
+      </section>
 
       <div id="sp-bloc-valider" hidden>
         <div class="section">Paiements à valider <span class="compteur" id="sp-nb-valider">0</span></div>
@@ -1010,17 +1145,15 @@
 
   <!-- ===================== FICHE SPONSOR ===================== -->
   <div id="vue-sponsor" hidden>
-    <header class="entete3">
-      <div class="e3-haut">
-        <div class="e3-tuiles"><span class="e3-tuile"><img data-logo alt=""></span><span class="e3-tuile" data-initiales aria-hidden="true"></span></div>
-        <span class="e3-espace" data-espace></span>
+    <header class="entete4">
+      <div class="e4-haut">
+        <span class="e4-logo"><img data-logo alt=""></span>
+        <span class="e4-nom" data-nom></span>
       </div>
-      <div class="e3-bas">
-        <h1 class="e3-titre" id="spf-titre">Sponsor</h1>
-        <div class="e3-actions"><button type="button" class="e3-btn" data-deconnexion aria-label="Se déconnecter"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4"/><path d="M14 8l4 4-4 4M18 12H9"/></svg></button></div>
-      </div>
+      <h1 class="e4-titre">Sponsors - <span data-espace></span></h1>
     </header>
     <div class="ajout">
+      <h2 class="titre-bloc spf-nom" id="spf-titre">Sponsor</h2>
       <div class="etapes" id="spf-etapes" aria-label="Avancement"></div>
       <div id="spf-paiement"></div>
 
@@ -1051,10 +1184,6 @@
           <label class="etiquette" for="spf-montant">Montant prévu</label>
           <input id="spf-montant" class="saisie petite" type="text" inputmode="decimal" placeholder="0,00 €">
         </div>
-        <div class="bloc">
-          <span class="etiquette" id="lbl-spf-fete">Pour quelle fête ?</span>
-          <div class="puces" id="spf-fetes" role="group" aria-labelledby="lbl-spf-fete"></div>
-        </div>
         <div class="bloc" id="spf-bloc-statut">
           <span class="etiquette" id="lbl-spf-statut">Où en est-on ?</span>
           <div class="puces" id="spf-statuts" role="group" aria-labelledby="lbl-spf-statut"></div>
@@ -1075,17 +1204,15 @@
 
   <!-- ===================== RÉGLAGES : CATÉGORIES ET FÊTES ===================== -->
   <div id="vue-listes" hidden>
-    <header class="entete3">
-      <div class="e3-haut">
-        <div class="e3-tuiles"><span class="e3-tuile"><img data-logo alt=""></span><span class="e3-tuile" data-initiales aria-hidden="true"></span></div>
-        <span class="e3-espace" data-espace></span>
+    <header class="entete4">
+      <div class="e4-haut">
+        <span class="e4-logo"><img data-logo alt=""></span>
+        <span class="e4-nom" data-nom></span>
       </div>
-      <div class="e3-bas">
-        <h1 class="e3-titre">Réglages</h1>
-        <div class="e3-actions"><button type="button" class="e3-btn" data-deconnexion aria-label="Se déconnecter"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4"/><path d="M14 8l4 4-4 4M18 12H9"/></svg></button></div>
-      </div>
+      <h1 class="e4-titre">Trésorerie - <span data-espace></span></h1>
     </header>
     <main class="ajout">
+      <h2 class="titre-bloc spf-nom">Catégories et fêtes</h2>
       <div id="erreur-listes" class="message erreur" role="alert" hidden></div>
 
       <div class="section" style="margin-top:0">Catégories des factures</div>
@@ -1117,6 +1244,11 @@
   <!-- Visionneuse de ticket -->
   <div class="visionneuse" id="visionneuse" role="dialog" aria-modal="true" aria-label="Ticket" hidden>
     <img id="v-img" alt="Photo du ticket">
+    <div class="v-nav" id="v-nav" hidden>
+      <button type="button" id="v-prec" aria-label="Photo précédente">‹</button>
+      <span id="v-pos"></span>
+      <button type="button" id="v-suiv" aria-label="Photo suivante">›</button>
+    </div>
     <a id="v-lien" href="#" target="_blank" rel="noopener">Ouvrir dans Google Drive</a>
     <button type="button" class="fermer" id="v-fermer">Fermer</button>
   </div>
@@ -1161,6 +1293,28 @@
   function lireJeton() { try { return localStorage.getItem(CLE) || sessionStorage.getItem(CLE); } catch (e) { return null; } }
   function garderJeton(j, longtemps) { try { (longtemps ? localStorage : sessionStorage).setItem(CLE, j); } catch (e) {} }
   function oublierJeton() { try { localStorage.removeItem(CLE); sessionStorage.removeItem(CLE); } catch (e) {} }
+
+  // ---------- Mémoire sur le téléphone : la dernière version de chaque page, affichée tout de suite ----------
+  const CLE_MEMO = 'festivites-memo';
+  function stockMemo() { try { return localStorage.getItem(CLE) ? localStorage : sessionStorage; } catch (e) { return null; } }
+  function lireMemo() {
+    try {
+      const st = stockMemo(); const m = st && JSON.parse(st.getItem(CLE_MEMO) || 'null');
+      return m && m.jeton && m.jeton === lireJeton() ? m : null;
+    } catch (e) { return null; }
+  }
+  let memoMinuteur = null;
+  function sauverMemo() {
+    clearTimeout(memoMinuteur);
+    memoMinuteur = setTimeout(() => {
+      try {
+        const st = stockMemo(); if (!st || !session || !lireJeton()) return;
+        st.setItem(CLE_MEMO, JSON.stringify({ jeton: lireJeton(), session, cal: calCache, tres: tresCache, details: detailsCache,
+          sond: sondData, sp: spData, fact: mesFacturesCache, ref }));
+      } catch (e) {}
+    }, 400);
+  }
+  function effacerMemo() { clearTimeout(memoMinuteur); try { localStorage.removeItem(CLE_MEMO); sessionStorage.removeItem(CLE_MEMO); } catch (e) {} }
   function message(el, texte) { el.textContent = texte || ''; el.hidden = !texte; }
   function texteErreur(err) {
     const m = (err && err.message) ? err.message.replace(/^Exception:\s*/, '') : 'Une erreur est survenue.';
@@ -1181,7 +1335,7 @@
   function serveur(nom, ...args) {
     if (DANS_GOOGLE) {
       return new Promise((ok, ko) => {
-        google.script.run.withSuccessHandler(ok).withFailureHandler(ko)[nom](...args);
+        google.script.run.withSuccessHandler(d => { ok(d); sauverMemo(); }).withFailureHandler(ko)[nom](...args);
       });
     }
     if (!/^https:\/\/script\.google\.com\/.+\/exec$/.test(API_URL)) {
@@ -1196,6 +1350,7 @@
       () => { throw new Error('Pas de connexion internet, ou serveur injoignable.'); }
     ).then((r) => {
       if (!r || !r.ok) throw new Error((r && r.error) || 'Erreur du serveur.');
+      sauverMemo();
       return r.data;
     });
   }
@@ -1222,36 +1377,66 @@
     if (b.dataset.vue === 'vue-sondages') chargerSondages();
   }));
 
-  function ouvrirEspace(s, accueil) {
+  let espaceOuvert = false;
+  function ouvrirEspace(s, accueil, depuisMemo) {
     accueil = accueil || s.accueil || {};
+    if (espaceOuvert && session && session.role === s.role && session.nom === s.nom) {
+      // Déjà affiché (depuis la mémoire) : on remplace par les données fraîches sans changer de page.
+      session = s;
+      if (accueil.reunions) { calCache = accueil.reunions; if (!$('vue-calendrier').hidden) afficherCalendrier(calCache); }
+      if (accueil.tresorerie) { tresCache = accueil.tresorerie; if (!$('vue-tresorerie').hidden) afficherTresorerie(tresCache); }
+      message($('erreur-cal'), '');
+      lancerPrechargement();
+      return;
+    }
+    espaceOuvert = true;
     // Le serveur décide ce que chacun voit ; ici on choisit seulement la page d'arrivée.
     session = s;
     document.querySelectorAll('[data-nom]').forEach(e => { e.textContent = s.nom; });
     const initiales = String(s.nom || '').trim().split(/\s+/).map(x => x[0] || '').join('').slice(0, 2).toUpperCase();
     document.querySelectorAll('[data-initiales]').forEach(e => { e.textContent = initiales; });
-    const espace = { 'Membre': 'Espace membre', 'Bureau': 'Espace Bureau', 'Secrétaire': 'Espace Bureau',
-                     'Trésorier': 'Espace Trésorerie', 'Président': 'Espace Président' }[s.role] || 'Espace membre';
+    const espace = s.role === 'Membre' ? 'Espace membre' : 'Espace Bureau';   // deux espaces seulement
     document.querySelectorAll('[data-espace]').forEach(e => { e.textContent = espace; });
     $('onglet-factures').hidden = s.role === 'Membre';
     setTimeout(() => { demarrerNotifications(s); demarrerCompteurs(); }, 300);
     $('lbl-nav-sponsors').textContent = 'Sponsors';
     $('btn-ajouter').hidden = true;
     $('onglet-tresorerie').hidden = !s.voitChiffres;
-    $('onglet-membres').hidden = s.role !== 'Président';
+    $('onglet-membres').hidden = !['Président', 'Vice-président'].includes(s.role);
     $('t-recette').hidden = s.role !== 'Trésorier';
     $('b-saisir').hidden = s.role !== 'Trésorier';
-    if (s.voitChiffres) {
-      montrer('vue-tresorerie');
-      ouvrirTresorerie(accueil.tresorerie);
-    } else {
-      montrer('vue-calendrier');
-      chargerCalendrier(accueil.reunions);
-    }
+    // Tout le monde arrive sur le calendrier ; la trésorerie reste dans la barre du bas.
+    montrer('vue-calendrier');
+    chargerCalendrier(accueil.reunions);
+    if (!depuisMemo) lancerPrechargement();
   }
+
+  // ---------- Préchargement : les autres pages sont prêtes avant qu'on les ouvre ----------
+  let prechargeEnCours = false, dernierPrecharge = 0;
+  async function lancerPrechargement() {
+    if (prechargeEnCours || !lireJeton()) return;
+    prechargeEnCours = true; dernierPrecharge = Date.now();
+    try {
+      const p = await serveur('prechargement', lireJeton());
+      if (p.details) Object.assign(detailsCache, p.details);
+      if (p.sondages) sondData = p.sondages;
+      if (p.sponsors) spData = p.sponsors;
+      if (p.mesFactures) mesFacturesCache = p.mesFactures;
+      if (p.referentiels && !ref) ref = p.referentiels;
+      sauverMemo();
+    } catch (e) { /* pas grave : chaque page se chargera normalement */ }
+    finally { prechargeEnCours = false; }
+  }
+  // Quand on revient sur l'appli après un moment, on remet tout à jour en arrière-plan.
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState !== 'visible' || !session || Date.now() - dernierPrecharge < 60000) return;
+    if (!$('vue-calendrier').hidden) chargerCalendrier();
+    lancerPrechargement();
+  });
 
   function sessionPerdue(err) {
     if (/Session expirée|Compte désactivé/.test(texteErreur(err))) {
-      oublierJeton(); session = null; montrer('vue-connexion');
+      effacerMemo(); oublierJeton(); session = null; espaceOuvert = false; detailsCache = {}; montrer('vue-connexion');
       message($('erreur'), texteErreur(err));
       return true;
     }
@@ -1290,6 +1475,7 @@
     try { if (osPret) OneSignalDeferred.push((OS) => OS.logout()); } catch (e) {}
     clearInterval(compteursMinuteur);
     if ('clearAppBadge' in navigator) navigator.clearAppBadge().catch(() => {});
+    effacerMemo(); espaceOuvert = false; detailsCache = {};
     oublierJeton(); session = null; ref = null; calCache = null; tresCache = null; mesFacturesCache = null; refFactureAJour = false; feteFiltre = ''; spData = null; spFiltre = 'tous'; sondData = null;
     if (j) serveur('deconnexion', j).catch(() => {});
     montrer('vue-connexion');
@@ -1350,7 +1536,7 @@
   function carte(r, passee) {
     const c = document.createElement('button');
     c.type = 'button';
-    c.className = 'carte3' + (r.type === 'Réunion bureau' ? ' bureau' : '');
+    c.className = 'carte3' + (r.type === 'Réunion bureau' ? ' bureau' : '') + (passee ? ' passee' : '');
     const [js, jn, mo] = String(r.jour || '').split(' ');
     const date = document.createElement('div'); date.className = 'c3-date';
     [js, jn, mo].forEach(t => { const s = document.createElement('span'); s.textContent = t || ''; date.appendChild(s); });
@@ -1366,22 +1552,61 @@
       if (r.tenue) { const t = document.createElement('div'); t.textContent = r.tenue; inf.appendChild(t); }
       if (r.lieu) { const l = document.createElement('div'); l.textContent = r.lieu; inf.appendChild(l); }
       corps.appendChild(inf);
-      const nb = document.createElement('span'); nb.className = 'c3-nb';
-      nb.innerHTML = ICONE_GROUPE + '<span></span>'; nb.lastChild.textContent = r.nbPresents;
-      corps.appendChild(nb);
+      if (Array.isArray(r.sansReponse)) {
+        // Bureau : présents, absents, sans réponse, et tâches restantes
+        const sv = document.createElement('div'); sv.className = 'c3-suivi';
+        [['ok', '✓', r.nbPresents, 'présents'], ['ko', '✗', r.nbAbsents || 0, 'absents'], ['att', '?', r.sansReponse.length, 'sans réponse']].forEach(([c, ic, n, lib]) => {
+          const s = document.createElement('span'); s.className = 'sv ' + c; s.title = n + ' ' + lib;
+          const i = document.createElement('b'); i.textContent = ic; s.append(i, document.createTextNode(' ' + n)); sv.appendChild(s);
+        });
+        if (r.tachesRestantes) {
+          const t = document.createElement('span'); t.className = 'sv taches';
+          t.textContent = r.tachesRestantes + (r.tachesRestantes > 1 ? ' tâches à faire' : ' tâche à faire'); sv.appendChild(t);
+        }
+        corps.appendChild(sv);
+      } else {
+        const nb = document.createElement('span'); nb.className = 'c3-nb';
+        nb.innerHTML = ICONE_GROUPE + '<span></span>'; nb.lastChild.textContent = r.nbPresents;
+        corps.appendChild(nb);
+      }
     }
     c.append(date, corps);
     c.setAttribute('aria-label', r.titre + ', ' + r.jour + ' à ' + r.heure + (r.lieu ? ', ' + r.lieu : '') +
-      (passee ? ', terminé' : ', ' + (r.maReponse || 'pas encore répondu') + ', ' + r.nbPresents + ' présents') + '. Ouvrir');
+      (passee ? ', terminé' : ', ' + (r.maReponse || 'pas encore répondu') + ', ' + r.nbPresents + ' présents' +
+        (Array.isArray(r.sansReponse) ? ', ' + (r.nbAbsents || 0) + ' absents, ' + r.sansReponse.length + ' sans réponse' +
+          (r.tachesRestantes ? ', ' + r.tachesRestantes + ' tâches à faire' : '') : '')) + '. Ouvrir');
     c.addEventListener('click', () => ouvrirEvenement(r));
     return c;
   }
 
   // ---------- Page d'un évènement ----------
   let evt = null, evtDetail = null, evtCROuvert = false;
+  let detailsCache = {};   // détail de chaque évènement déjà vu ou préchargé
+
+  /** Met à jour ma réponse et les compteurs, sans attendre le serveur. */
+  function appliquerReponse(r, rep, motif) {
+    const moi = session ? session.nom : '';
+    const etaitPresent = r.maReponse === 'Présent', etaitAbsent = r.maReponse === 'Absent';
+    r.presents = (r.presents || []).filter(n => n !== moi);
+    r.absents = (r.absents || []).filter(a => a.nom !== moi);
+    r.nbPresents = Math.max(0, (r.nbPresents || 0) - (etaitPresent ? 1 : 0));
+    r.nbAbsents = Math.max(0, (r.nbAbsents || 0) - (etaitAbsent ? 1 : 0));
+    if (rep === 'Présent') { r.presents.push(moi); r.presents.sort((a, b) => a.localeCompare(b)); r.nbPresents++; }
+    else { r.absents.push({ nom: moi, motif }); r.absents.sort((a, b) => a.nom.localeCompare(b.nom)); r.nbAbsents++; }
+    if (Array.isArray(r.sansReponse)) r.sansReponse = r.sansReponse.filter(n => n !== moi);
+    r.maReponse = rep; r.monMotif = rep === 'Absent' ? motif : '';
+    majCalendrierDepuis(r);
+  }
+  /** Recopie l'évènement modifié dans le calendrier gardé en mémoire. */
+  function majCalendrierDepuis(r) {
+    if (calCache) ['aVenir', 'terminees'].forEach(k => (calCache[k] || []).forEach((x, i, t) => { if (x.id === r.id && x !== r) t[i] = Object.assign({}, x, r); }));
+    if (detailsCache[r.id]) detailsCache[r.id].reunion = r;
+    sauverMemo();
+  }
 
   function ouvrirEvenement(r) {
-    evt = r; evtDetail = null; evtCROuvert = false;
+    evt = r; evtDetail = detailsCache[r.id] || null; evtCROuvert = false;
+    if (evtDetail) evtDetail.reunion = r;
     message($('erreur-evt'), '');
     dessinerEvenement();
     montrer('vue-evenement');
@@ -1389,8 +1614,12 @@
   }
   async function chargerDetailEvt() {
     try {
-      evtDetail = await serveur('detailReunion', lireJeton(), evt.id);
-      evt = evtDetail.reunion;
+      const id = evt.id;
+      const d = await serveur('detailReunion', lireJeton(), id);
+      detailsCache[id] = d;
+      if (!evt || evt.id !== id || $('vue-evenement').hidden) return;   // on a quitté la page entre-temps
+      evtDetail = d; evt = d.reunion;
+      majCalendrierDepuis(evt);
       dessinerEvenement();
     } catch (err) {
       if (!sessionPerdue(err)) message($('erreur-evt'), texteErreur(err));
@@ -1436,19 +1665,27 @@
     p.appendChild(zone);
 
     const repondre = async (rep, motif) => {
+      // On affiche la réponse tout de suite, et on l'envoie derrière. En cas d'échec, on revient en arrière.
+      const avant = JSON.parse(JSON.stringify({ maReponse: r.maReponse || '', monMotif: r.monMotif || '', nbPresents: r.nbPresents || 0,
+        presents: r.presents || [], nbAbsents: r.nbAbsents || 0, absents: r.absents || [], sansReponse: r.sansReponse }));
+      appliquerReponse(r, rep, motif || '');
+      message($('erreur-evt'), '');
+      dessinerEvenement();
       try {
         await serveur('repondreReunion', lireJeton(), r.id, rep, motif || '');
-        r.maReponse = rep; r.monMotif = motif || '';
-        calCache = null;
-        await chargerDetailEvt();
-      } catch (e) { if (!sessionPerdue(e)) message(rep === 'Absent' ? err : $('erreur-evt'), texteErreur(e)); }
+        chargerDetailEvt();
+      } catch (e) {
+        Object.assign(r, avant); majCalendrierDepuis(r);
+        if (!$('vue-evenement').hidden && evt && evt.id === r.id) dessinerEvenement();
+        if (!sessionPerdue(e)) message($('erreur-evt'), 'Ta réponse n’a pas été enregistrée : ' + texteErreur(e));
+      }
     };
-    bp.addEventListener('click', () => { zone.hidden = true; if (r.maReponse !== 'Présent') { bp.disabled = true; repondre('Présent'); } });
+    bp.addEventListener('click', () => { zone.hidden = true; if (r.maReponse !== 'Présent') repondre('Présent'); });
     ba.addEventListener('click', () => { zone.hidden = false; champ.focus(); });
     const envoyer = () => {
       const motif = champ.value.trim();
       if (!motif) return message(err, 'Indique le motif de ton absence.');
-      valider.disabled = true; repondre('Absent', motif);
+      repondre('Absent', motif);
     };
     valider.addEventListener('click', envoyer);
     champ.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); envoyer(); } });
@@ -1470,6 +1707,7 @@
     };
     ajouterListe('Présents (' + r.nbPresents + ')', (r.presents || []).map(n => [n]));
     if (calVoitAbsents) ajouterListe('Absents (' + r.nbAbsents + ')', (r.absents || []).map(a => [a.nom, a.motif]));
+    if (Array.isArray(r.sansReponse) && !passee) ajouterListe('Pas encore répondu (' + r.sansReponse.length + ')', r.sansReponse.map(n => [n]));
     lien.addEventListener('click', () => { noms.hidden = !noms.hidden; lien.setAttribute('aria-expanded', String(!noms.hidden)); });
     p.append(lien, noms);
 
@@ -1483,7 +1721,8 @@
       t.addEventListener('click', () => deposerDepuisEvenement(r));
       tu.appendChild(t);
     }
-    const montrerCR = droits.deposerCR || crs.length > 0 || droits.taches;
+    // Comptes rendus : seulement si l'évènement a été créé comme « Réunion »
+    const montrerCR = !!d && droits.comptesRendus !== false && (droits.deposerCR || crs.length > 0 || droits.modifier);
     if (montrerCR) {
       const t = document.createElement('button'); t.type = 'button'; t.className = 'tuile';
       t.innerHTML = '<svg width="40" height="34" viewBox="0 0 24 20" fill="none" stroke="#1C1C1A" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M2 4a1 1 0 0 1 1-1h6l2 2h10a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"/></svg><span></span>';
@@ -1574,10 +1813,12 @@
       cr.appendChild(boite);
     }
 
-    // Tâches de l'équipe (bureau)
-    const ta = $('evt-taches'); ta.innerHTML = ''; ta.hidden = !(d && droits.taches);
-    if (d && droits.taches) {
-      const h = document.createElement('h2'); h.className = 'titre-bloc'; h.textContent = 'Tâches de l’équipe'; ta.appendChild(h);
+    // Tâches : le bureau voit et gère toutes les tâches ; un membre voit (et coche) seulement les siennes
+    const mesTaches = d ? (d.taches || []) : [];
+    const voirTaches = !!d && (droits.taches || mesTaches.length > 0);
+    const ta = $('evt-taches'); ta.innerHTML = ''; ta.hidden = !voirTaches;
+    if (voirTaches) {
+      const h = document.createElement('h2'); h.className = 'titre-bloc'; h.textContent = droits.taches ? 'Tâches de l’équipe' : 'Mes tâches'; ta.appendChild(h);
       const boite = document.createElement('div'); boite.className = 'boite';
       (d.taches || []).forEach(t => {
         const l = document.createElement('div'); l.className = 'ligne' + (t.fait ? ' fait' : '');
@@ -1586,9 +1827,15 @@
         cs.setAttribute('aria-label', t.titre);
         if (t.fait) cs.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>';
         cs.addEventListener('click', async () => {
-          cs.disabled = true;
-          try { await serveur('cocherTache', lireJeton(), t.id, !t.fait); chargerDetailEvt(); }
-          catch (e) { cs.disabled = false; if (!sessionPerdue(e)) message($('erreur-evt'), texteErreur(e)); }
+          const avant = { fait: t.fait, faitPar: t.faitPar };
+          t.fait = !t.fait; t.faitPar = t.fait && session ? session.nom : '';
+          if (evt && evt.tachesRestantes != null && evtDetail) { evt.tachesRestantes = (evtDetail.taches || []).filter(x => !x.fait).length; majCalendrierDepuis(evt); }
+          message($('erreur-evt'), ''); dessinerEvenement(); sauverMemo();
+          try { await serveur('cocherTache', lireJeton(), t.id, t.fait); chargerDetailEvt(); }
+          catch (e) {
+            Object.assign(t, avant); if (!$('vue-evenement').hidden) dessinerEvenement();
+            if (!sessionPerdue(e)) message($('erreur-evt'), 'La tâche n’a pas été mise à jour : ' + texteErreur(e));
+          }
         });
         const tx = document.createElement('div'); tx.className = 'txt';
         const a = document.createElement('span'); a.textContent = t.titre;
@@ -1601,9 +1848,11 @@
           try { await serveur('supprimerTache', lireJeton(), t.id); chargerDetailEvt(); }
           catch (e) { if (!sessionPerdue(e)) message($('erreur-evt'), texteErreur(e)); }
         });
-        l.append(cs, tx, x);
+        l.append(cs, tx);
+        if (droits.taches) l.appendChild(x);
         boite.appendChild(l);
       });
+      if (droits.taches) {
       // Formulaire « juste à remplir »
       const f = document.createElement('form'); f.className = 'formulaire-simple'; f.noValidate = true;
       const ti = document.createElement('input'); ti.className = 'saisie petite'; ti.placeholder = 'Nouvelle tâche (ex. : Réserver la sono)';
@@ -1625,6 +1874,7 @@
         catch (e) { b.disabled = false; if (!sessionPerdue(e)) message(e2, texteErreur(e)); }
       });
       boite.appendChild(f);
+      }
       ta.appendChild(boite);
     }
 
@@ -1645,11 +1895,18 @@
   let tenuesConnues = [];
   function choisirType(type) {
     typeChoisi = type;
-    document.querySelectorAll('.opt').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.type === type)));
+    $('r-type').value = type;
     $('aide-type').textContent = type === 'Réunion bureau'
       ? 'Visible seulement par le bureau.' : 'Visible par tous les membres.';
+    // Une réunion de bureau est toujours une réunion (avec compte rendu)
+    const c = $('r-reunion'), bureau = type === 'Réunion bureau';
+    if (bureau) c.checked = true;
+    else if (c.disabled) c.checked = !!(reunionEditee && reunionEditee.estReunion);   // on quitte « Bureau »
+    c.disabled = bureau;
+    $('aide-reunion').textContent = bureau ? 'Une réunion de bureau a toujours un compte rendu.'
+                                           : 'Un compte rendu pourra être déposé par la secrétaire.';
   }
-  document.querySelectorAll('.opt').forEach(b => b.addEventListener('click', () => choisirType(b.dataset.type)));
+  $('r-type').addEventListener('change', () => choisirType($('r-type').value));
 
   let reunionEditee = null;   // null = nouvel évènement
 
@@ -1657,6 +1914,7 @@
     reunionEditee = (r && r.id) ? r : null;
     $('form-reunion').reset();
     message($('erreur-form'), '');
+    $('r-reunion').checked = !!(reunionEditee && reunionEditee.estReunion);
     choisirType(reunionEditee ? reunionEditee.type : 'Réunion bureau');
     if (reunionEditee) {
       $('r-date').value = r.dateIso;
@@ -1670,11 +1928,10 @@
     const sup = $('btn-supprimer-reu');
     sup.hidden = !reunionEditee; sup.dataset.confirmer = ''; sup.textContent = 'Supprimer l’évènement';
     const zt = $('r-tenues'); zt.innerHTML = '';
-    tenuesConnues.forEach(t => {
-      const b = document.createElement('button'); b.type = 'button'; b.className = 'puce'; b.textContent = t;
-      b.addEventListener('click', () => { $('r-tenue').value = t; });
-      zt.appendChild(b);
-    });
+    zt.hidden = !tenuesConnues.length;
+    zt.appendChild(new Option('Reprendre une tenue déjà utilisée…', ''));
+    tenuesConnues.forEach(t => zt.appendChild(new Option(t, t)));
+    zt.onchange = () => { if (zt.value) $('r-tenue').value = zt.value; zt.value = ''; };
     montrer('vue-ajout');
     $(reunionEditee ? 'r-titre' : 'r-date').focus();
   }
@@ -1701,7 +1958,8 @@
   $('form-reunion').addEventListener('submit', async (e) => {
     e.preventDefault();
     const d = { titre: $('r-titre').value.trim(), date: $('r-date').value, heure: $('r-heure').value,
-                lieu: $('r-lieu').value.trim(), type: typeChoisi, tenue: $('r-tenue').value.trim() };
+                lieu: $('r-lieu').value.trim(), type: typeChoisi, tenue: $('r-tenue').value.trim(),
+                reunion: typeChoisi === 'Réunion bureau' || $('r-reunion').checked };
     if (!d.titre || !d.date || !d.heure || !d.lieu) return message($('erreur-form'), 'Remplis le nom, la date, l’heure et le lieu.');
     $('btn-creer').disabled = true;
     try {
@@ -1720,7 +1978,8 @@
   let ref = null;               // catégories + fêtes (chargées une fois)
   let refFactureAJour = false;  // puces du formulaire facture dessinées ?
   let choixCat = '', choixFete = '';
-  let ticket = null;            // { nom, type, base64 }
+  let tickets = [];             // [{ nom, type, base64, url }] : jusqu'à 5 photos ou PDF
+  const NB_PHOTOS_MAX = 5;
 
   async function ouvrirFactures() {
     message($('ok-facture'), '');
@@ -1755,58 +2014,61 @@
     ecrire('');
   }
 
-  function dessinerPuces(conteneur, valeurs, lire, ecrire) {
+  /** Choix dans une liste : un menu déroulant (mêmes raccourcis _choisir / _raz qu'avant). */
+  function dessinerPuces(conteneur, valeurs, lire, ecrire, invite) {
     conteneur.innerHTML = '';
-    const boutons = valeurs.map(v => {
-      const b = document.createElement('button');
-      b.type = 'button'; b.className = 'puce'; b.textContent = v;
-      b.setAttribute('aria-pressed', 'false');
-      b.addEventListener('click', () => {
-        ecrire(v);
-        boutons.forEach(x => x.setAttribute('aria-pressed', String(x.textContent === lire())));
-      });
-      conteneur.appendChild(b);
-      return b;
-    });
-    conteneur._raz = () => { ecrire(''); boutons.forEach(x => x.setAttribute('aria-pressed', 'false')); };
-    conteneur._choisir = (v) => { ecrire(v); boutons.forEach(x => x.setAttribute('aria-pressed', String(x.textContent === v))); };
+    const sel = document.createElement('select'); sel.className = 'saisie petite';
+    const lab = conteneur.getAttribute('aria-labelledby'), al = conteneur.getAttribute('aria-label');
+    if (lab) sel.setAttribute('aria-labelledby', lab); else if (al) sel.setAttribute('aria-label', al);
+    sel.appendChild(new Option(invite || '— Choisir —', ''));
+    valeurs.forEach(v => sel.appendChild(new Option(v, v)));
+    sel.value = valeurs.includes(lire()) ? lire() : '';
+    sel.addEventListener('change', () => ecrire(sel.value));
+    conteneur.appendChild(sel);
+    conteneur._raz = () => { sel.value = ''; ecrire(''); };
+    conteneur._choisir = (v) => { sel.value = valeurs.includes(v) ? v : ''; ecrire(sel.value); };
   }
 
-  // Photo du ticket : réduite sur le téléphone avant l'envoi (plus rapide, moins de data)
+
+  // Photos du ticket : réduites sur le téléphone avant l'envoi (plus rapide, moins de data). Jusqu'à 5.
   $('f-ticket').addEventListener('change', async () => {
-    const f = $('f-ticket').files[0];
+    const fichiers = [...$('f-ticket').files];
+    $('f-ticket').value = '';
     message($('erreur-facture'), '');
-    if (!f) return;
-    try {
-      if (f.type === 'application/pdf') {
-        if (f.size > 5 * 1024 * 1024) throw new Error('PDF trop lourd (5 Mo maximum).');
-        ticket = { nom: f.name, type: f.type, base64: await enBase64(f) };
-        afficherTicket(null, f.name);
-      } else if (f.type.startsWith('image/')) {
-        const { base64, url } = await compresser(f);
-        ticket = { nom: f.name, type: 'image/jpeg', base64 };
-        afficherTicket(url, 'Photo prête');
-      } else {
-        throw new Error('Choisis une photo ou un PDF.');
-      }
-    } catch (err) {
-      ticket = null; afficherTicket(null, '');
-      message($('erreur-facture'), texteErreur(err));
+    for (const f of fichiers) {
+      if (tickets.length >= NB_PHOTOS_MAX) { message($('erreur-facture'), NB_PHOTOS_MAX + ' photos au maximum par facture.'); break; }
+      try {
+        if (f.type === 'application/pdf') {
+          if (f.size > 5 * 1024 * 1024) throw new Error('PDF trop lourd (5 Mo maximum).');
+          tickets.push({ nom: f.name, type: f.type, base64: await enBase64(f), url: '' });
+        } else if (f.type.startsWith('image/')) {
+          const { base64, url } = await compresser(f);
+          tickets.push({ nom: f.name, type: 'image/jpeg', base64, url });
+        } else {
+          throw new Error('Choisis une photo ou un PDF.');
+        }
+      } catch (err) { message($('erreur-facture'), texteErreur(err)); }
     }
+    afficherTickets();
   });
 
-  function afficherTicket(urlImage, texte) {
-    const zone = $('f-apercu');
-    if (urlImage) {
-      zone.innerHTML = '';
-      const img = document.createElement('img'); img.src = urlImage; img.alt = '';
-      zone.appendChild(img);
-    } else if (!texte) {
-      zone.innerHTML = zone.dataset.vide || zone.innerHTML;
-    }
-    $('f-ticket-titre').textContent = texte ? (urlImage ? 'Photo du ticket ajoutée' : 'PDF ajouté') : 'Photo du ticket';
-    $('f-ticket-sous').textContent = texte ? 'Touche pour changer' : 'Prendre une photo ou choisir un PDF';
+  function afficherTickets() {
+    const n = tickets.length, zone = $('f-photos');
+    zone.innerHTML = ''; zone.hidden = !n;
+    tickets.forEach((t, i) => {
+      const v = document.createElement('div'); v.className = 'f-vignette';
+      if (t.url) { const img = document.createElement('img'); img.src = t.url; img.alt = 'Photo ' + (i + 1); v.appendChild(img); }
+      else { const p = document.createElement('span'); p.className = 'pdf'; p.textContent = 'PDF'; v.appendChild(p); }
+      const x = document.createElement('button'); x.type = 'button'; x.className = 'retirer'; x.textContent = '×';
+      x.setAttribute('aria-label', 'Retirer la photo ' + (i + 1));
+      x.addEventListener('click', () => { tickets.splice(i, 1); afficherTickets(); });
+      v.appendChild(x); zone.appendChild(v);
+    });
+    $('f-ticket-titre').textContent = n ? (n > 1 ? n + ' photos du ticket' : '1 photo du ticket') : 'Photo du ticket';
+    $('f-ticket-sous').textContent = !n ? 'Prendre une photo ou choisir un PDF (5 au maximum)'
+      : n < NB_PHOTOS_MAX ? 'Touche pour ajouter une autre photo' : 'Maximum atteint (5)';
   }
+  function afficherTicket() { tickets = []; afficherTickets(); }   // remise à zéro
   $('f-apercu').dataset.vide = $('f-apercu').innerHTML;
 
   function enBase64(fichier) {
@@ -1846,10 +2108,11 @@
       dateAchat: $('f-date').value,
       categorie: choixCat,
       fete: choixFete,
-      ticket
+      tickets: tickets.map(t => ({ nom: t.nom, type: t.type, base64: t.base64 })),
+      aRembourser: $('f-rembourser').checked
     };
     const manque = [];
-    if (!ticket) manque.push('la photo du ticket');
+    if (!tickets.length) manque.push('la photo du ticket');
     if (!d.fournisseur) manque.push('le magasin');
     if (!d.montant) manque.push('le montant');
     if (!d.categorie) manque.push('la catégorie');
@@ -1862,7 +2125,7 @@
       const r = await serveur('deposerFacture', lireJeton(), d);
       $('form-facture').reset();
       $('f-date').value = aujourdhui();
-      ticket = null; afficherTicket(null, '');
+      afficherTicket();
       $('f-categories')._raz(); $('f-fetes')._raz();
       message($('ok-facture'), 'Facture envoyée. La trésorière va la vérifier.');
       chargerMesFactures();
@@ -1899,6 +2162,11 @@
         const b = document.createElement('b'); b.textContent = f.fournisseur;
         const s = document.createElement('small'); s.textContent = 'Envoyée le ' + f.dateDepot;
         t.append(b, s);
+        if (f.aRembourser && f.statut !== 'Refusée') {
+          const r = document.createElement('small'); r.className = 'rembours' + (f.remboursee ? ' ok' : '');
+          r.textContent = f.remboursee ? 'Remboursée le ' + f.rembourseeLe + ' ✓' : 'À me rembourser';
+          t.appendChild(r);
+        }
         const st = document.createElement('span');
         st.className = 'statut ' + ({ 'Validée': 'validee', 'Refusée': 'refusee' }[f.statut] || 'attente');
         st.textContent = f.statut;
@@ -1915,17 +2183,60 @@
   let tresCache = null;
   const signe = (n) => (n > 0 ? '+ ' : n < 0 ? '− ' : '') + euros(Math.abs(n));
 
+  let tresAnnee = 0;   // 0 = année en cours (choisie par le serveur)
   function afficherTresorerie(d) {
+    if (d.annee) tresAnnee = d.annee;
+    const sa = $('t-annee'); sa.innerHTML = '';
+    (d.annees || [d.annee]).filter(Boolean).forEach(a => sa.appendChild(new Option('Saison ' + a, a)));
+    sa.value = String(d.annee || '');
+    if (d.saison) dessinerTotaux($('t-saison'), d.saison);
     ref = d.referentiels;
     chargerAttente(d.attente);
+    dessinerRembourser(d.aRembourser || []);
     dessinerBilans(d.bilans);
+  }
+
+  /** Factures validées que la trésorière doit rembourser à la personne qui a payé. */
+  function dessinerRembourser(liste) {
+    $('t-bloc-rembourser').hidden = !liste.length;
+    $('t-nb-remb').textContent = liste.length;
+    const zone = $('t-rembourser'); zone.innerHTML = '';
+    liste.forEach(f => {
+      const c = document.createElement('article'); c.className = 'a-valider';
+      const haut = document.createElement('div'); haut.className = 'haut';
+      const txt = document.createElement('div'); txt.className = 'txt';
+      const b = document.createElement('b'); b.textContent = 'À ' + f.deposePar;
+      const s1 = document.createElement('small'); s1.textContent = f.fournisseur + ' · ' + f.fete + ' · achat du ' + f.dateAchat;
+      txt.append(b, s1);
+      const m = document.createElement('span'); m.className = 'montant'; m.textContent = euros(f.montant);
+      haut.append(txt, m); c.appendChild(haut);
+      if (session && session.role === 'Trésorier') {
+        const bas = document.createElement('div'); bas.className = 'bas';
+        const ok = document.createElement('button'); ok.type = 'button'; ok.className = 'valider'; ok.textContent = 'Marquer remboursé';
+        ok.addEventListener('click', async () => {
+          if (!ok.classList.contains('confirmer')) { ok.classList.add('confirmer'); ok.textContent = 'Confirmer : ' + euros(f.montant) + ' remboursés'; return; }
+          ok.disabled = true;
+          try {
+            await serveur('marquerRembourse', lireJeton(), f.id);
+            if (tresCache && tresCache.aRembourser) tresCache.aRembourser = tresCache.aRembourser.filter(x => x.id !== f.id);
+            dessinerRembourser(tresCache ? tresCache.aRembourser : liste.filter(x => x.id !== f.id));
+            majCompteurs();
+          } catch (err) { ok.disabled = false; if (!sessionPerdue(err)) message($('erreur-tres'), texteErreur(err)); }
+        });
+        bas.appendChild(ok); c.appendChild(bas);
+      } else {
+        const info = document.createElement('small'); info.style.cssText = 'display:block;padding:0 14px 12px';
+        info.textContent = 'La trésorière marquera le remboursement.'; c.appendChild(info);
+      }
+      zone.appendChild(c);
+    });
   }
   async function ouvrirTresorerie(pre) {
     message($('erreur-tres'), '');
     if (pre) { tresCache = pre; afficherTresorerie(pre); return; }
     if (tresCache) afficherTresorerie(tresCache);
     try {
-      tresCache = await serveur('tresorerie', lireJeton());
+      tresCache = await serveur('tresorerie', lireJeton(), tresAnnee);
       afficherTresorerie(tresCache);
     } catch (err) {
       if (!sessionPerdue(err)) message($('erreur-tres'), texteErreur(err));
@@ -1933,7 +2244,31 @@
   }
   const rafraichirBilans = () => ouvrirTresorerie();
   /** Met à jour la mémoire de la trésorerie sans changer d'écran. */
-  const rafraichirBilansDiscret = () => serveur('tresorerie', lireJeton()).then(d => { tresCache = d; }).catch(() => {});
+  const rafraichirBilansDiscret = () => serveur('tresorerie', lireJeton(), tresAnnee).then(d => { tresCache = d; }).catch(() => {});
+  $('t-annee').addEventListener('change', () => { tresAnnee = Number($('t-annee').value); tresCache = null; ouvrirTresorerie(); });
+
+  /** Écart avec l'année d'avant : « 2025 : + 2 900,00 € (↑ 500,00 €) ». */
+  function texteComparaison(actuel, p) {
+    if (!p) return '';
+    const ecart = Math.round((actuel - p.resultat) * 100) / 100;
+    return p.annee + ' : résultat ' + signe(p.resultat) + (ecart ? ' (' + (ecart > 0 ? '↑ ' : '↓ ') + euros(Math.abs(ecart)) + ' cette année)' : ' (pareil)');
+  }
+
+  /** Carte foncée Entrées / Sorties / Résultat (+ comparaison avec l'an dernier). */
+  function dessinerTotaux(zone, t) {
+    zone.innerHTML = '';
+    [['Entrées', '+ ' + euros(t.entrees), ''], ['Sorties', '− ' + euros(t.sorties), ''], ['Résultat', signe(t.resultat), 'resultat']].forEach(([lib, val, cls]) => {
+      const div = document.createElement('div'); if (cls) div.className = cls;
+      const s = document.createElement('small'); s.textContent = lib;
+      const v = document.createElement('span'); v.textContent = val;
+      div.append(s, v); zone.appendChild(div);
+    });
+    if (t.precedent) {
+      const c = document.createElement('div'); c.className = 'comparaison';
+      c.textContent = 'Comparé à ' + texteComparaison(t.resultat, t.precedent);
+      zone.appendChild(c);
+    }
+  }
 
   function dessinerBilans(bilans) {
     const zone = $('t-bilans'); zone.innerHTML = '';
@@ -1954,6 +2289,10 @@
           d.append(s, v); ch.appendChild(d);
         });
       c.append(l1, ch);
+      if (b.precedent) {
+        const cmp = document.createElement('span'); cmp.className = 'note comparaison-note';
+        cmp.textContent = texteComparaison(b.resultat, b.precedent); c.appendChild(cmp);
+      }
       if (b.nbAttente) {
         const note = document.createElement('span'); note.className = 'note';
         note.textContent = b.nbAttente + (b.nbAttente > 1 ? ' factures' : ' facture') + ' en attente (' + euros(b.enAttente) + '), pas encore comptée' + (b.nbAttente > 1 ? 's' : '');
@@ -1965,36 +2304,41 @@
     });
   }
 
+  let bilanCourant = null;
   async function ouvrirBilan(fete) {
     $('b-titre').textContent = fete;
+    $('b-annee').textContent = tresAnnee ? '– ' + tresAnnee : '';
+    bilanCourant = null;
+    $('b-fonds').innerHTML = ''; message($('erreur-fond'), '');
     message($('erreur-bilan'), '');
     ['b-total', 'b-origines', 'b-jours', 'b-recettes', 'b-categories', 'b-factures'].forEach(id => $(id).innerHTML = '');
     $('b-origines').innerHTML = '<p class="vide">Chargement…</p>';
     $('b-attente').hidden = true;
     montrer('vue-bilan');
     try {
-      const d = await serveur('bilanFete', lireJeton(), fete);
-      const tot = $('b-total'); tot.innerHTML = '';
-      [['Entrées', '+ ' + euros(d.entrees), ''], ['Sorties', '− ' + euros(d.sorties), ''], ['Résultat', signe(d.resultat), 'resultat']].forEach(([lib, val, cls]) => {
-        const div = document.createElement('div'); if (cls) div.className = cls;
-        const s = document.createElement('small'); s.textContent = lib;
-        const v = document.createElement('span'); v.textContent = val;
-        div.append(s, v); tot.appendChild(div);
-      });
+      const d = await serveur('bilanFete', lireJeton(), fete, tresAnnee);
+      bilanCourant = d;
+      dessinerTotaux($('b-total'), d);
+      dessinerFonds(d);
       if (d.nbAttente) {
         $('b-attente').hidden = false;
         $('b-attente').textContent = d.nbAttente + (d.nbAttente > 1 ? ' factures en attente' : ' facture en attente') + ' de validation (' + euros(d.enAttente) + ') : elles seront comptées une fois validées.';
       }
-      barres($('b-origines'), d.parOrigine, d.entrees, 'Aucune entrée pour l’instant.');
+      barres($('b-origines'), d.parOrigine, d.entrees + (d.fondCaisse || 0), 'Aucune entrée pour l’instant.');
       barres($('b-jours'), d.parJour || [], d.entrees, 'Aucune entrée pour l’instant.');
       barres($('b-categories'), d.parCategorie, d.sorties, 'Aucune facture validée pour l’instant.');
       $('b-sum-recettes').textContent = 'Voir le détail des entrées (' + d.recettes.length + ')';
-      $('b-sum-factures').textContent = 'Voir le détail des factures (' + d.factures.length + ')';
+      const payes = d.payes || [];
+      $('b-sum-factures').textContent = 'Voir le détail des sorties (' + (d.factures.length + payes.length) + ')';
+      payes.forEach(x => $('b-factures').appendChild(ligneArgent(x.libelle,
+        'Payé sur place · ' + x.jour + (x.moment && x.moment !== 'Journée' ? ' ' + x.moment.toLowerCase() : '') + ' · ' + (x.mode || '').toLowerCase(),
+        '− ' + euros(x.montant), 'moins-r')));
       d.recettes.forEach(r => $('b-recettes').appendChild(ligneArgent(r.origine, (r.jour || r.date) + (r.commentaire ? ' · ' + r.commentaire : ''), '+ ' + euros(r.montant), 'plus-v')));
       d.factures.forEach(f => {
         const l = ligneArgent(f.fournisseur, f.categorie + ' · ' + f.dateAchat + ' · par ' + f.deposePar, '− ' + euros(f.montant), 'moins-r');
         if (f.ticket) {
-          const v = document.createElement('button'); v.type = 'button'; v.className = 'voir'; v.textContent = 'Voir le ticket';
+          const v = document.createElement('button'); v.type = 'button'; v.className = 'voir';
+          v.textContent = f.nbTickets > 1 ? 'Voir les ' + f.nbTickets + ' photos' : 'Voir le ticket';
           v.addEventListener('click', () => voirTicket(f.id, v));
           l.querySelector('.txt').appendChild(v);
         }
@@ -2006,6 +2350,57 @@
     }
   }
   $('b-retour').addEventListener('click', () => { montrer('vue-tresorerie'); ouvrirTresorerie(); });
+
+  // Fonds de caisse : un par service si besoin, saisis avec le chiffre d'affaires
+  function dessinerFonds(d) {
+    const fonds = d.fonds || [], zone = $('b-fonds'); zone.innerHTML = '';
+    $('b-fond-texte').textContent = fonds.length
+      ? 'Total : ' + euros(d.fondCaisse) + ', déjà déduit des entrées.'
+      : 'Aucun fond de caisse. Il se saisit avec le chiffre d’affaires de chaque service.';
+    const tres = session && session.role === 'Trésorier';
+    fonds.forEach(x => {
+      const l = ligneArgent(x.jour + (x.moment && x.moment !== 'Journée' ? ' · ' + x.moment.toLowerCase() : ''), 'Saisi par ' + x.saisiePar, '− ' + euros(x.montant), 'moins-r');
+      if (tres) {
+        const sup = iconeBouton(ICONE_POUBELLE, 'Supprimer ce fond de caisse', 'danger');
+        sup.addEventListener('click', async () => {
+          if (!sup.dataset.confirmer) { sup.dataset.confirmer = '1'; sup.innerHTML = ICONE_OK; sup.setAttribute('aria-label', 'Confirmer la suppression'); return; }
+          sup.disabled = true;
+          try { await serveur('supprimerFondCaisse', lireJeton(), x.id); rafraichirBilansDiscret(); ouvrirBilan($('b-titre').textContent); }
+          catch (err) { sup.disabled = false; if (!sessionPerdue(err)) message($('erreur-fond'), texteErreur(err)); }
+        });
+        l.appendChild(sup);
+      }
+      zone.appendChild(l);
+    });
+  }
+
+  // Exports du bilan
+  function telecharger(nom, blob) {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = nom; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 60000);
+  }
+  $('b-pdf').addEventListener('click', async () => {
+    const b = $('b-pdf'), avant = b.textContent; b.disabled = true; b.textContent = 'Préparation…';
+    try {
+      const r = await serveur('bilanFetePdf', lireJeton(), $('b-titre').textContent, tresAnnee);
+      const octets = Uint8Array.from(atob(r.base64), c => c.charCodeAt(0));
+      telecharger(r.nom, new Blob([octets], { type: 'application/pdf' }));
+    } catch (err) { if (!sessionPerdue(err)) message($('erreur-bilan'), texteErreur(err)); }
+    finally { b.disabled = false; b.textContent = avant; }
+  });
+  $('b-csv').addEventListener('click', () => {
+    const d = bilanCourant; if (!d) return;
+    const cel = (v) => { const t = String(v == null ? '' : v); return /[;"\n]/.test(t) ? '"' + t.replace(/"/g, '""') + '"' : t; };
+    const nb = (n) => String(Math.round(n * 100) / 100).replace('.', ',');
+    const lignes = [['Type', 'Date', 'Libellé', 'Catégorie', 'Service', 'Montant (€)', 'Par']];
+    d.recettes.forEach(r => lignes.push(['Entrée', r.date, r.origine, r.categorie, r.moment, nb(r.montant), r.saisiePar]));
+    (d.payes || []).forEach(x => lignes.push(['Sortie (payé sur place, ' + (x.mode || '').toLowerCase() + ')', x.date, x.libelle, 'Payé sur place', x.moment, nb(-x.montant), x.saisiePar]));
+    d.factures.forEach(f => lignes.push(['Sortie (facture)', f.dateAchat, f.fournisseur, f.categorie, '', nb(-f.montant), f.deposePar]));
+    lignes.push([], ['Total entrées', '', '', '', '', nb(d.entrees)], ['Total sorties', '', '', '', '', nb(-d.sorties)], ['Résultat', '', '', '', '', nb(d.resultat)]);
+    const csv = '\ufeff' + lignes.map(l => l.map(cel).join(';')).join('\r\n');
+    telecharger('Bilan ' + d.fete + ' ' + d.annee + '.csv', new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+  });
 
   function barres(zone, groupes, total, vide) {
     zone.innerHTML = '';
@@ -2057,9 +2452,10 @@
     const s1 = document.createElement('small'); s1.textContent = f.categorie + ' · ' + f.fete;
     const s2 = document.createElement('small'); s2.textContent = 'Par ' + f.deposePar + ' · achat du ' + f.dateAchat;
     txt.append(b, s1, s2);
+    if (f.aRembourser) { const r = document.createElement('small'); r.className = 'rembours'; r.textContent = 'Payée par ' + f.deposePar + ' : à rembourser'; txt.appendChild(r); }
     if (f.ticket) {
       const v = document.createElement('button'); v.type = 'button'; v.className = 'voir';
-      v.textContent = 'Voir le ticket';
+      v.textContent = f.nbTickets > 1 ? 'Voir les ' + f.nbTickets + ' photos' : 'Voir le ticket';
       v.addEventListener('click', () => voirTicket(f.id, v));
       txt.appendChild(v);
     }
@@ -2109,11 +2505,17 @@
     }
   }
 
-  async function voirTicket(id, bouton) {
+  let visionEnCours = null;   // { id, index, nb }
+  async function voirTicket(id, bouton, index) {
     const avant = bouton.textContent;
     bouton.textContent = 'Chargement…'; bouton.disabled = true;
     try {
-      const t = await serveur('voirTicket', lireJeton(), id);
+      const t = await serveur('voirTicket', lireJeton(), id, index || 0);
+      visionEnCours = { id, index: t.index || 0, nb: t.nb || 1 };
+      $('v-nav').hidden = visionEnCours.nb < 2;
+      $('v-pos').textContent = (visionEnCours.index + 1) + ' / ' + visionEnCours.nb;
+      $('v-prec').disabled = visionEnCours.index <= 0;
+      $('v-suiv').disabled = visionEnCours.index >= visionEnCours.nb - 1;
       $('v-lien').href = t.url;
       if (t.type.startsWith('image/')) {
         $('v-img').src = 'data:' + t.type + ';base64,' + t.base64;
@@ -2129,7 +2531,11 @@
       bouton.textContent = avant; bouton.disabled = false;
     }
   }
-  function fermerVisionneuse() { $('visionneuse').hidden = true; $('v-img').src = ''; }
+  function fermerVisionneuse() { $('visionneuse').hidden = true; $('v-img').src = ''; visionEnCours = null; }
+  ['v-prec', 'v-suiv'].forEach((idb, k) => $(idb).addEventListener('click', () => {
+    if (!visionEnCours) return;
+    voirTicket(visionEnCours.id, $(idb), visionEnCours.index + (k ? 1 : -1));
+  }));
   $('v-fermer').addEventListener('click', fermerVisionneuse);
   $('visionneuse').addEventListener('keydown', (e) => { if (e.key === 'Escape') fermerVisionneuse(); });
 
@@ -2141,7 +2547,31 @@
   function majTotalCA() {
     const total = [...document.querySelectorAll('#rc-lignes input')].reduce((t, i) => t + enNombre(i.value), 0);
     $('rc-total').textContent = euros(total);
+    const dep = [...document.querySelectorAll('#rc-depenses .dep-montant')].reduce((t, i) => t + Math.abs(enNombre(String(i.value).replace('-', ''))), 0);
+    $('rc-total-dep').textContent = '− ' + euros(dep);
+    $('rc-bloc-total-dep').hidden = !document.querySelector('#rc-depenses .dep-ligne');
   }
+
+  // Payé sur place : libellé, montant, moyen de paiement
+  const MODES_DEPENSE = ['Espèces', 'Chèque', 'Virement', 'Carte bancaire'];
+  function ajouterLigneDepense() {
+    const zone = $('rc-depenses'); zone.hidden = false;
+    const n = zone.children.length + 1;
+    const l = document.createElement('div'); l.className = 'dep-ligne';
+    const lib = document.createElement('input'); lib.className = 'saisie petite dep-libelle'; lib.maxLength = 80;
+    lib.placeholder = 'Ex. : Manade'; lib.setAttribute('aria-label', 'Dépense ' + n + ' : ce qui a été payé');
+    const mt = document.createElement('input'); mt.className = 'saisie petite dep-montant'; mt.inputMode = 'decimal';
+    mt.placeholder = '0,00 €'; mt.setAttribute('aria-label', 'Dépense ' + n + ' : montant');
+    mt.addEventListener('input', majTotalCA);
+    const mode = document.createElement('select'); mode.className = 'saisie petite dep-mode'; mode.setAttribute('aria-label', 'Dépense ' + n + ' : payé comment ?');
+    mode.appendChild(new Option('Payé comment ?', ''));
+    MODES_DEPENSE.forEach(m => mode.appendChild(new Option(m, m)));
+    const sup = iconeBouton(ICONE_POUBELLE, 'Enlever la dépense ' + n, 'danger');
+    sup.addEventListener('click', () => { l.remove(); if (!zone.children.length) zone.hidden = true; majTotalCA(); });
+    l.append(lib, mt, mode, sup); zone.appendChild(l);
+    majTotalCA(); lib.focus();
+  }
+  $('rc-ajout-depense').addEventListener('click', ajouterLigneDepense);
 
   /** Lignes du formulaire : une par catégorie d'entrée, avec une poubelle pour l'enlever. */
   function dessinerLignesCA() {
@@ -2245,19 +2675,13 @@
     $('rc-date').value = aujourdhui();
     dessinerPuces($('rc-fetes'), ref.fetes, () => choixFeteRecette, v => { choixFeteRecette = v; chargerCreneaux(); });
     const zm = $('rc-moments'); zm.innerHTML = ''; choixMoment = '';
-    const boutonsM = MOMENTS_CA.map(([val, lib]) => {
-      const b = document.createElement('button'); b.type = 'button'; b.className = 'puce'; b.textContent = lib;
-      b.setAttribute('aria-pressed', 'false');
-      b.addEventListener('click', () => {
-        choixMoment = val;
-        boutonsM.forEach((x, i) => x.setAttribute('aria-pressed', String(MOMENTS_CA[i][0] === val)));
-        majDejaSaisi();
-      });
-      zm.appendChild(b); return b;
-    });
+    zm.appendChild(new Option('— Choisir le service —', ''));
+    MOMENTS_CA.forEach(([val, lib]) => zm.appendChild(new Option(lib, val)));
+    zm.onchange = () => { choixMoment = zm.value; majDejaSaisi(); };
     creneaux = {}; majDejaSaisi();
     if (fete) $('rc-fetes')._choisir(fete); else $('rc-fetes')._raz();
     $('rc-lignes').innerHTML = '';
+    $('rc-depenses').innerHTML = ''; $('rc-depenses').hidden = true;
     dessinerLignesCA();
     montrer('vue-recette');
   }
@@ -2269,17 +2693,27 @@
     e.preventDefault();
     const lignes = [...document.querySelectorAll('#rc-lignes input')]
       .filter(i => i.value.trim()).map(i => ({ categorie: i.dataset.categorie, montant: i.value.trim() }));
+    const depenses = [...document.querySelectorAll('#rc-depenses .dep-ligne')].map(l => ({
+      libelle: l.querySelector('.dep-libelle').value.trim(), montant: l.querySelector('.dep-montant').value.trim().replace('-', ''),
+      mode: l.querySelector('.dep-mode').value
+    })).filter(x => x.libelle || x.montant);
     const manque = [];
     if (!choixFeteRecette) manque.push('la fête');
     if (!$('rc-date').value) manque.push('le jour');
     if (!choixMoment) manque.push('le service (midi, soir ou journée)');
-    if (!lignes.length) manque.push('au moins un montant');
+    const fondCaisse = $('rc-fond').value.trim();
+    if (!lignes.length && !depenses.length && !fondCaisse) manque.push('au moins un montant');
+    depenses.forEach(x => {
+      if (!x.libelle) manque.push('ce qui a été payé (ex. : Manade)');
+      else if (!x.montant) manque.push('le montant de « ' + x.libelle + ' »');
+      else if (!x.mode) manque.push('comment « ' + x.libelle + ' » a été payé');
+    });
     if (manque.length) return message($('erreur-recette'), 'Il manque ' + manque.join(', ') + '.');
     message($('erreur-recette'), '');
     $('rc-enregistrer').disabled = true;
     try {
       await serveur('ajouterChiffreAffaires', lireJeton(),
-        { fete: choixFeteRecette, date: $('rc-date').value, moment: choixMoment, lignes, commentaire: $('rc-note').value.trim() });
+        { fete: choixFeteRecette, date: $('rc-date').value, moment: choixMoment, lignes, depenses, fondCaisse, commentaire: $('rc-note').value.trim() });
       if (retourCA === 'vue-bilan') { ouvrirBilan(choixFeteRecette); rafraichirBilansDiscret(); }
       else { montrer('vue-tresorerie'); rafraichirBilans(); }
     } catch (err) {
@@ -2290,7 +2724,7 @@
   });
 
   // ---------- Membres (président) ----------
-  const ROLES = ['Président', 'Trésorier', 'Secrétaire', 'Bureau', 'Membre'];
+  const ROLES = ['Président', 'Vice-président', 'Trésorier', 'Vice-trésorier', 'Secrétaire', 'Vice-secrétaire', 'Bureau', 'Membre'];
   let choixRole = 'Membre';
   let ancienIdentifiant = '';
 
@@ -2392,6 +2826,7 @@
 
   function dessinerSponsors() {
     const d = spData, tous = d.sponsors;
+    dessinerRib(d);
     $('sp-ajouter').hidden = !d.droits.creer;
 
     // Trésorière : paiements à valider
@@ -2413,12 +2848,11 @@
     filtres.hidden = !d.droits.creer;
     filtres.innerHTML = '';
     if (d.droits.creer) {
-      [['mes', 'Mes sponsors'], ['tous', 'Tous les sponsors']].forEach(([v, t]) => {
-        const b = el('button', 'puce', t); b.type = 'button';
-        b.setAttribute('aria-pressed', String(spFiltre === v));
-        b.addEventListener('click', () => { spFiltre = v; dessinerSponsors(); });
-        filtres.appendChild(b);
-      });
+      const sel = el('select', 'saisie petite'); sel.setAttribute('aria-label', 'Afficher');
+      [['tous', 'Tous les sponsors'], ['mes', 'Mes sponsors']].forEach(([v, t]) => sel.appendChild(new Option(t, v)));
+      sel.value = spFiltre;
+      sel.addEventListener('change', () => { spFiltre = sel.value; dessinerSponsors(); });
+      filtres.appendChild(sel);
     }
     const vue = (!d.droits.creer || spFiltre === 'mes') ? tous.filter(x => x.estAMoi) : tous;
     $('sp-titre-liste').textContent = (!d.droits.creer || spFiltre === 'mes') ? 'Mes sponsors' : 'Tous les sponsors';
@@ -2435,7 +2869,8 @@
       const l1 = el('div', 'l1');
       l1.append(el('b', '', x.entreprise), el('span', 'etat ' + classeEtat(x.statut), x.statut));
       const l2 = el('div', 'l1');
-      l2.appendChild(el('small', '', (spFiltre === 'tous' && d.droits.creer ? 'Suivi par ' + x.suiviPar + ' · ' : '') + x.fete));
+      l2.appendChild(el('small', '', spFiltre === 'tous' && d.droits.creer ? 'Suivi par ' + x.suiviPar : (x.estAMoi ? 'Suivi par moi' : '')));
+      if (x.facture) l2.firstChild.textContent += (l2.firstChild.textContent ? ' · ' : '') + 'facture ' + x.factureNum;
       const m = x.montantRecu != null ? x.montantRecu : x.montantPrevu;
       if (m != null) l2.appendChild(el('span', 'm', euros(m)));
       c.append(l1, l2);
@@ -2444,13 +2879,66 @@
     });
   }
 
+  // ---------- RIB du comité : à partager aux sponsors ----------
+  const ibanLisible = (i) => String(i || '').replace(/(.{4})/g, '$1 ').trim();
+  function texteRib(c) {
+    return 'Coordonnées bancaires – ' + c.nom + '\n' + (c.titulaire ? 'Titulaire : ' + c.titulaire + '\n' : '') +
+      'IBAN : ' + ibanLisible(c.iban) + (c.bic ? '\nBIC : ' + c.bic : '');
+  }
+  async function partagerRib(bouton) {
+    const c = spData && spData.comite; if (!c || !c.iban) return;
+    const t = texteRib(c);
+    try {
+      if (navigator.share) { await navigator.share({ title: 'RIB – ' + c.nom, text: t }); return; }
+    } catch (e) { if (e && e.name === 'AbortError') return; }
+    copierTexte(t, bouton);
+  }
+  async function copierTexte(t, bouton) {
+    try { await navigator.clipboard.writeText(t); } catch (e) {
+      const z = document.createElement('textarea'); z.value = t; document.body.appendChild(z); z.select();
+      try { document.execCommand('copy'); } catch (e2) {} z.remove();
+    }
+    if (bouton) { const a = bouton.textContent; bouton.textContent = 'Copié ✓'; setTimeout(() => { bouton.textContent = a; }, 1600); }
+  }
+  function dessinerRib(d) {
+    const c = d.comite || {};
+    $('sp-rib').hidden = !c.iban && !d.droits.reglerComite;
+    $('sp-rib-texte').textContent = c.iban ? (c.titulaire ? c.titulaire + ' · ' : '') + ibanLisible(c.iban) + (c.bic ? ' · ' + c.bic : '')
+      : 'Pas encore de RIB : ajoute-le pour que tout le monde puisse le partager.';
+    $('sp-rib-partager').hidden = $('sp-rib-copier').hidden = !c.iban;
+    $('sp-rib-modifier').hidden = !d.droits.reglerComite;
+    $('sp-rib-modifier').textContent = c.iban ? 'Modifier le RIB et les coordonnées du comité' : 'Ajouter le RIB et les coordonnées du comité';
+  }
+  $('sp-rib-partager').addEventListener('click', () => partagerRib($('sp-rib-partager')));
+  $('sp-rib-copier').addEventListener('click', () => spData && copierTexte(texteRib(spData.comite), $('sp-rib-copier')));
+  $('sp-rib-modifier').addEventListener('click', () => {
+    const f = $('form-comite'), c = (spData && spData.comite) || {};
+    f.hidden = !f.hidden;
+    if (!f.hidden) {
+      $('cm-nom').value = c.nom || ''; $('cm-adresse').value = c.adresse || ''; $('cm-identifiant').value = c.identifiant || '';
+      $('cm-email').value = c.email || ''; $('cm-titulaire').value = c.titulaire || ''; $('cm-iban').value = ibanLisible(c.iban); $('cm-bic').value = c.bic || '';
+      message($('erreur-cm'), ''); $('cm-nom').focus();
+    }
+  });
+  $('form-comite').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const d = { nom: $('cm-nom').value.trim(), adresse: $('cm-adresse').value.trim(), identifiant: $('cm-identifiant').value.trim(),
+                email: $('cm-email').value.trim(), titulaire: $('cm-titulaire').value.trim(), iban: $('cm-iban').value.trim(), bic: $('cm-bic').value.trim() };
+    $('cm-enregistrer').disabled = true;
+    try {
+      spData.comite = await serveur('enregistrerComite', lireJeton(), d);
+      $('form-comite').hidden = true; dessinerRib(spData);
+    } catch (err) { if (!sessionPerdue(err)) message($('erreur-cm'), texteErreur(err)); }
+    finally { $('cm-enregistrer').disabled = false; }
+  });
+
   function carteValiderSponsor(x) {
     const c = el('article', 'tache');
     const l1 = el('div', 'l1'); l1.style.cssText = 'display:flex;justify-content:space-between;gap:10px';
     l1.append(el('b', '', x.entreprise), el('span', 'm', euros(x.montantRecu)));
     l1.lastChild.style.cssText = 'font-family:var(--serif);font-size:20px';
     c.append(l1, el('small', '', x.mode + (x.numeroCheque ? ' n° ' + x.numeroCheque : '') + ' · reçu le ' + x.dateRecu +
-      ' par ' + x.suiviPar + ' · ' + x.fete));
+      ' par ' + x.suiviPar));
     const bas = el('div', 'bas2');
     const ok = el('button', 'valider', 'Bien reçu'); ok.type = 'button';
     const non = el('button', 'refuser', 'Pas reçu'); non.type = 'button';
@@ -2467,6 +2955,11 @@
     });
     bas.append(ok, non, motif);
     c.appendChild(bas);
+    if (spData.droits.facture) {
+      const f = el('button', 'lien-noms', x.facture ? 'Facture ' + x.factureNum + ' faite · ouvrir la fiche' : 'Faire la facture →'); f.type = 'button';
+      f.addEventListener('click', () => ouvrirSponsor(x));
+      c.appendChild(f);
+    }
     return c;
   }
 
@@ -2532,8 +3025,6 @@
       sel.disabled = true;
     }
 
-    dessinerPuces($('spf-fetes'), d.fetes, () => spChoixFete, v => spChoixFete = v);
-    $('spf-fetes')._choisir(x ? x.fete : '');
     const statutLibre = !x || LIBRES_SP.includes(x.statut);
     $('spf-bloc-statut').hidden = !statutLibre;
     dessinerPuces($('spf-statuts'), LIBRES_SP, () => spChoixStatut, v => spChoixStatut = v);
@@ -2588,6 +3079,11 @@
         } catch (e2) { b.disabled = false; if (!sessionPerdue(e2)) message(err, texteErreur(e2)); }
       });
       box.append(grille, chq, err, b);
+      if (spData.comite && spData.comite.iban) {
+        const r = el('button', 'lien-noms', 'Partager le RIB du comité au sponsor'); r.type = 'button';
+        r.addEventListener('click', () => partagerRib(r));
+        box.appendChild(r);
+      }
     } else if (x.statut === 'Paiement récupéré') {
       box.appendChild(el('h3', '', 'Paiement à remettre'));
       box.appendChild(el('p', '', (x.montantRecu != null ? euros(x.montantRecu) + ' · ' : '') + x.mode +
@@ -2611,6 +3107,74 @@
       box.appendChild(b);
     }
     zone.appendChild(box);
+    if (['Paiement récupéré', 'Paiement validé', 'CERFA disponible'].includes(x.statut)) zone.appendChild(blocFacture(x));
+  }
+
+  /** Facture du sponsor (après paiement) : la trésorière la crée et l'envoie ; le membre et le bureau la téléchargent. */
+  let spMsgFacture = '';
+  function blocFacture(x) {
+    const d = spData, box = el('section', 'encadre');
+    box.appendChild(el('h3', '', 'Facture'));
+    const err = el('div', 'message erreur'); err.setAttribute('role', 'alert'); err.hidden = true;
+    const ok = el('div', 'message info'); ok.setAttribute('role', 'status'); ok.hidden = true;
+    if (spMsgFacture) { ok.hidden = false; ok.textContent = spMsgFacture; spMsgFacture = ''; }
+    const recharger = async (txt) => {
+      spMsgFacture = txt || '';
+      await chargerSponsors();
+      ouvrirSponsor(spData.sponsors.find(s => s.id === x.id));
+    };
+    if (x.facture) {
+      box.appendChild(el('p', '', 'Facture ' + x.factureNum + ' du ' + x.factureLe +
+        (x.factureEnvoyeeLe ? ' · envoyée par e-mail le ' + x.factureEnvoyeeLe : '')));
+      const t = el('button', 'bouton', 'Télécharger la facture'); t.type = 'button'; t.style.fontSize = '22px';
+      t.addEventListener('click', async () => {
+        t.disabled = true;
+        try { const r = await serveur('voirFactureSponsor', lireJeton(), x.id); window.open(r.url, '_blank', 'noopener'); }
+        catch (e) { if (!sessionPerdue(e)) message(err, texteErreur(e)); }
+        finally { t.disabled = false; }
+      });
+      box.appendChild(t);
+    } else if (!d.droits.facture) {
+      box.appendChild(el('p', '', 'La trésorière prépare la facture. Tu recevras une notification quand elle sera prête à télécharger.'));
+    }
+    if (d.droits.facture) {
+      if (!x.facture) {
+        box.appendChild(el('p', '', 'Montant : ' + euros(x.montantRecu) + ' · payé le ' + x.dateRecu + ' (' + x.mode.toLowerCase() + ').'));
+        const objet = el('input', 'saisie petite'); objet.maxLength = 150; objet.setAttribute('aria-label', 'Objet de la facture');
+        objet.placeholder = 'Objet (par défaut : Partenariat – saison ' + (x.dateRecu || '').slice(-4) + ')';
+        const lab = el('label', 'interrupteur'); const cb = el('input'); cb.type = 'checkbox'; cb.checked = !!x.email; cb.disabled = !x.email;
+        lab.append(cb, document.createTextNode(x.email ? ' L’envoyer par e-mail à ' + x.email : ' Pas d’e-mail sur la fiche : ajoute-le pour l’envoyer'));
+        const b = el('button', 'bouton', 'Créer la facture'); b.type = 'button'; b.style.fontSize = '22px';
+        b.addEventListener('click', async () => {
+          b.disabled = true; b.textContent = 'Création…'; message(err, '');
+          try {
+            const r = await serveur('creerFactureSponsor', lireJeton(), x.id, { objet: objet.value.trim(), envoyer: cb.checked });
+            await recharger('Facture ' + r.num + ' créée' + (r.envoyee ? ' et envoyée à ' + x.email + '.' : '.'));
+          } catch (e) { b.disabled = false; b.textContent = 'Créer la facture'; if (!sessionPerdue(e)) message(err, texteErreur(e)); }
+        });
+        box.append(objet, lab, b);
+      } else {
+        const env = el('button', 'secondaire', x.factureEnvoyeeLe ? 'Renvoyer par e-mail' : 'Envoyer par e-mail à ' + (x.email || '…'));
+        env.type = 'button'; env.disabled = !x.email;
+        env.addEventListener('click', async () => {
+          env.disabled = true; env.textContent = 'Envoi…'; message(err, '');
+          try { await serveur('envoyerFactureSponsor', lireJeton(), x.id); await recharger('Facture envoyée à ' + x.email + '.'); }
+          catch (e) { env.disabled = false; env.textContent = 'Envoyer par e-mail'; if (!sessionPerdue(e)) message(err, texteErreur(e)); }
+        });
+        const refaire = el('button', 'lien-noms', 'Refaire la facture (même numéro)'); refaire.type = 'button';
+        refaire.addEventListener('click', async () => {
+          if (!refaire.dataset.ok) { refaire.dataset.ok = '1'; refaire.textContent = 'Confirmer : refaire la facture'; return; }
+          refaire.disabled = true;
+          try { await serveur('creerFactureSponsor', lireJeton(), x.id, {}); await recharger('Facture refaite.'); }
+          catch (e) { refaire.disabled = false; if (!sessionPerdue(e)) message(err, texteErreur(e)); }
+        });
+        box.append(env, refaire);
+        if (!x.email) box.appendChild(el('small', '', 'Ajoute l’e-mail du sponsor sur sa fiche pour pouvoir l’envoyer.'));
+      }
+    }
+    box.insertBefore(ok, box.children[1] || null);   // juste sous le titre « Facture »
+    box.appendChild(err);
+    return box;
   }
 
   $('form-sponsor').addEventListener('submit', async (e) => {
@@ -2623,14 +3187,12 @@
       email: $('spf-email').value.trim(),
       attribueA: $('spf-suivi').disabled ? '' : $('spf-suivi').value,
       montantPrevu: $('spf-montant').value.trim(),
-      fete: spChoixFete,
       statut: spChoixStatut,
       notes: $('spf-notes').value.trim()
     };
     const manque = [];
     if (!d.entreprise) manque.push('le nom de l’entreprise');
     if (!spCourant && !d.attribueA) manque.push('qui le suit');
-    if (!d.fete) manque.push('la fête');
     if (manque.length) return message($('erreur-spf'), 'Il manque ' + manque.join(', ') + '.');
     message($('erreur-spf'), '');
     $('spf-enregistrer').disabled = true;
@@ -2746,7 +3308,12 @@
     const d = sondData;
     $('so-creer').hidden = !d.peutCreer;
     const ouverts = d.sondages.filter(x => !x.clos), clos = d.sondages.filter(x => x.clos);
-    [['so-encours', ouverts, 'Aucun sondage en cours.'], ['so-termines', clos, '']].forEach(([id, liste, vide]) => {
+    // Les sondages auxquels je n'ai pas encore répondu passent en premier
+    const aVoter = ouverts.filter(x => !x.mesChoix.length), votes = ouverts.filter(x => x.mesChoix.length);
+    $('so-titre-avoter').hidden = !aVoter.length;
+    $('so-nb-avoter').textContent = aVoter.length;
+    $('so-titre-encours').hidden = !votes.length && aVoter.length > 0;
+    [['so-avoter', aVoter, ''], ['so-encours', votes, aVoter.length ? '' : 'Aucun sondage en cours.'], ['so-termines', clos, '']].forEach(([id, liste, vide]) => {
       const z = $(id); z.innerHTML = '';
       if (!liste.length && vide) { const p = document.createElement('p'); p.className = 'vide'; p.textContent = vide; z.appendChild(p); }
       liste.forEach(x => z.appendChild(carteSondage(x, d)));
@@ -2754,9 +3321,26 @@
     $('so-titre-termines').hidden = !clos.length;
   }
 
+  /** Compte mon vote tout de suite (nombres, pourcentages, noms), sans attendre le serveur. */
+  function appliquerVote(x, choix, voitNoms) {
+    const moi = session ? session.nom : '', ancien = x.mesChoix || [];
+    if (!ancien.length) x.nbVotants++;
+    x.options.forEach((o, i) => {
+      o.nb += (choix.includes(i) ? 1 : 0) - (ancien.includes(i) ? 1 : 0);
+      if (voitNoms) {
+        o.noms = (o.noms || []).filter(n => n !== moi);
+        if (choix.includes(i)) { o.noms.push(moi); o.noms.sort((a, b) => a.localeCompare(b)); }
+      }
+    });
+    x.options.forEach(o => { o.pct = x.nbVotants ? Math.round(o.nb / x.nbVotants * 100) : 0; });
+    if (Array.isArray(x.nonVotants)) x.nonVotants = x.nonVotants.filter(n => n !== moi);
+    x.mesChoix = choix.slice();
+  }
+
   function carteSondage(x, d) {
     const c = document.createElement('article'); c.className = 'sondage';
     const h = document.createElement('h3'); h.textContent = x.question;
+    if (x.bureauSeul) { c.classList.add('bureau'); const t = document.createElement('span'); t.className = 'c3-tag'; t.textContent = 'Bureau'; h.appendChild(t); }
     const info = document.createElement('small');
     info.textContent = (x.clos ? 'Terminé' : (x.fin ? 'Ouvert jusqu’au ' + x.fin : 'Ouvert')) + ' · ' +
       x.nbVotants + (x.nbVotants > 1 ? ' votes' : ' vote') + (x.plusieurs ? ' · plusieurs réponses possibles' : '') + ' · par ' + x.creePar;
@@ -2796,9 +3380,14 @@
       v.textContent = aVote ? 'Modifier mon vote' : 'Voter';
       v.addEventListener('click', async () => {
         if (!choix.length) return message(err, 'Choisis une réponse.');
-        v.disabled = true; message(err, '');
-        try { await serveur('voterSondage', lireJeton(), x.id, choix); await chargerSondages(); }
-        catch (e) { v.disabled = false; if (!sessionPerdue(e)) message(err, texteErreur(e)); }
+        const avant = JSON.parse(JSON.stringify(x));
+        appliquerVote(x, choix, d.voitNoms);
+        message($('erreur-sond'), ''); dessinerSondages(); sauverMemo();
+        try { await serveur('voterSondage', lireJeton(), x.id, choix); chargerSondages(); majCompteurs(); }
+        catch (e) {
+          Object.assign(x, avant); if (!$('vue-sondages').hidden) dessinerSondages();
+          if (!sessionPerdue(e)) message($('erreur-sond'), 'Ton vote n’a pas été enregistré : ' + texteErreur(e));
+        }
       });
       c.appendChild(v);
     }
@@ -2813,6 +3402,11 @@
         const p = document.createElement('div'); p.className = o.noms.length ? '' : 'gris';
         p.textContent = o.noms.length ? o.noms.join(', ') : 'Personne'; noms.appendChild(p);
       });
+      if (!x.clos && Array.isArray(x.nonVotants)) {
+        const hh = document.createElement('h4'); hh.textContent = 'Pas encore voté (' + x.nonVotants.length + ')'; noms.appendChild(hh);
+        const p = document.createElement('div'); p.className = x.nonVotants.length ? '' : 'gris';
+        p.textContent = x.nonVotants.length ? x.nonVotants.join(', ') : 'Tout le monde a voté'; noms.appendChild(p);
+      }
       voir.addEventListener('click', () => { noms.hidden = !noms.hidden; voir.setAttribute('aria-expanded', String(!noms.hidden)); });
       outils.appendChild(voir);
       if (!x.clos) {
@@ -2865,6 +3459,7 @@
       question: $('sc-question').value.trim(),
       options: [...$('sc-choix').querySelectorAll('input')].map(i => i.value.trim()).filter(Boolean),
       plusieurs: $('sc-plusieurs').checked,
+      bureau: $('sc-bureau').checked,
       fin: $('sc-fin').value
     };
     if (!d.question) return message($('erreur-sc'), 'Écris la question.');
@@ -2882,12 +3477,25 @@
   function estIOS() { return /iPhone|iPad|iPod/.test(navigator.userAgent); }
   function estInstallee() { return navigator.standalone === true || matchMedia('(display-mode: standalone)').matches; }
 
+  let etatNotif = 'attente';   // attente | non-configure | chargement | pret | erreur
+  let raisonNotif = '';
+
   function demarrerNotifications(s) {
-    if (DANS_GOOGLE || !s.notifAppId || !('serviceWorker' in navigator) || location.protocol !== 'https:') { majBoutonNotif(); return; }
+    if (DANS_GOOGLE) { etatNotif = 'erreur'; raisonNotif = 'Les notifications marchent seulement dans l’appli installée depuis GitHub (alexiscvr.github.io/festivites).'; majBoutonNotif(); return; }
+    if (!s.notifAppId) { etatNotif = 'non-configure'; raisonNotif = 'Le serveur n’a pas encore les réglages OneSignal (menu Festivités > Configurer les notifications, puis « Nouvelle version » du déploiement).'; majBoutonNotif(); return; }
+    if (!('serviceWorker' in navigator) || !('Notification' in window)) {
+      etatNotif = 'erreur';
+      raisonNotif = estIOS() ? 'Sur iPhone, installe d’abord l’appli : Safari > Partager > « Sur l’écran d’accueil », puis ouvre-la depuis l’icône (iOS 16.4 minimum).'
+                             : 'Ce navigateur ne gère pas les notifications. Ouvre l’appli avec Chrome.';
+      majBoutonNotif(); return;
+    }
+    etatNotif = 'chargement'; raisonNotif = '';
+    majBoutonNotif();
     window.OneSignalDeferred = window.OneSignalDeferred || [];
     if (!document.getElementById('sdk-onesignal')) {
       const sc = document.createElement('script');
       sc.id = 'sdk-onesignal'; sc.src = 'https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js'; sc.defer = true;
+      sc.onerror = () => { etatNotif = 'erreur'; raisonNotif = 'Impossible de charger OneSignal (connexion internet ou bloqueur de publicité).'; majBoutonNotif(); };
       document.head.appendChild(sc);
     }
     OneSignalDeferred.push(async (OneSignal) => {
@@ -2904,32 +3512,48 @@
         }
         if (s.identifiant) await OneSignal.login(s.identifiant);   // pour que le serveur sache à qui envoyer
         OneSignal.User.addTag('role', s.role);
-      } catch (e) { /* notifications indisponibles : l'appli marche quand même */ }
+        etatNotif = 'pret'; raisonNotif = '';
+      } catch (e) {
+        etatNotif = 'erreur';
+        raisonNotif = 'OneSignal a refusé : ' + ((e && e.message) || e) + '. Vérifie dans OneSignal l’adresse du site (https://alexiscvr.github.io) et le service worker (/festivites/, sw.js).';
+      }
       majBoutonNotif();
     });
+    // Si OneSignal ne répond pas du tout au bout de 15 s, on le dit.
+    setTimeout(() => { if (etatNotif === 'chargement') { etatNotif = 'erreur'; raisonNotif = 'OneSignal ne répond pas. Recharge la page ; si ça continue, vérifie les réglages OneSignal.'; majBoutonNotif(); } }, 15000);
   }
 
   function majBoutonNotif() {
     const zone = $('notif-invite');
     if (!zone) return;
-    let refuse = false;
-    try { refuse = localStorage.getItem('notif-plus-tard') === '1'; } catch (e) {}
-    const supporte = 'Notification' in window;
-    const permission = supporte ? Notification.permission : 'default';
-    const iosNonInstallee = estIOS() && !estInstallee();
-    zone.hidden = DANS_GOOGLE || refuse || permission === 'granted' || permission === 'denied' || (!osPret && !iosNonInstallee);
-    $('notif-texte').textContent = iosNonInstallee
-      ? 'Sur iPhone, installe d’abord l’appli : bouton Partager > « Sur l’écran d’accueil ». Ouvre-la ensuite depuis l’icône pour activer les notifications.'
-      : 'Reçois une notification pour les nouveaux évènements, sondages, comptes rendus et tâches.';
-    $('notif-activer').hidden = iosNonInstallee;
+    let plusTard = 0;
+    try { plusTard = Number(localStorage.getItem('notif-plus-tard') || 0); } catch (e) {}
+    const permission = ('Notification' in window) ? Notification.permission : 'default';
+    const recemmentRepousse = Date.now() - plusTard < 3 * 24 * 3600 * 1000;   // « Plus tard » = 3 jours
+    if (permission === 'granted' && etatNotif === 'pret') { zone.hidden = true; return; }
+    zone.hidden = recemmentRepousse && etatNotif !== 'erreur' && etatNotif !== 'non-configure';
+    const t = $('notif-texte'), b = $('notif-activer');
+    if (permission === 'denied') {
+      t.textContent = 'Les notifications sont bloquées sur ce téléphone. Pour les autoriser : touche le cadenas (ou ⋮ > Infos sur le site) > Notifications > Autoriser, puis recharge.';
+      b.hidden = true;
+    } else if (etatNotif === 'pret') {
+      t.textContent = 'Reçois une notification pour les nouveaux évènements, sondages, comptes rendus et tâches.';
+      b.hidden = false; b.disabled = false; b.textContent = 'Activer';
+    } else if (etatNotif === 'chargement' || etatNotif === 'attente') {
+      t.textContent = 'Préparation des notifications…';
+      b.hidden = false; b.disabled = true; b.textContent = 'Patiente…';
+    } else {
+      t.textContent = raisonNotif;
+      b.hidden = true;
+    }
   }
   $('notif-activer').addEventListener('click', async () => {
     try { await OneSignal.Notifications.requestPermission(); } catch (e) {}
     majBoutonNotif();
   });
   $('notif-plus-tard').addEventListener('click', () => {
-    try { localStorage.setItem('notif-plus-tard', '1'); } catch (e) {}
-    majBoutonNotif();
+    try { localStorage.setItem('notif-plus-tard', String(Date.now())); } catch (e) {}
+    $('notif-invite').hidden = true;
   });
 
   // ---------- Pastilles (ce qui attend la personne) ----------
@@ -2961,7 +3585,21 @@
 
   // ---------- Au démarrage : déjà connecté ? ----------
   const jeton = lireJeton();
-  if (jeton) serveur('demarrer', jeton).then(d => ouvrirEspace(d.session, d.accueil)).catch(oublierJeton);
+  if (jeton) {
+    const m = lireMemo();
+    if (m && m.session) {
+      calCache = m.cal || null; tresCache = m.tres || null; detailsCache = m.details || {};
+      sondData = m.sond || null; spData = m.sp || null; mesFacturesCache = m.fact || null; ref = m.ref || null;
+      ouvrirEspace(m.session, { reunions: m.cal }, true);
+    }
+    serveur('demarrer', jeton).then(d => ouvrirEspace(d.session, d.accueil)).catch(err => {
+      if (!m || /Session expirée|Compte désactivé/.test(texteErreur(err))) {
+        if (!sessionPerdue(err)) { effacerMemo(); oublierJeton(); }
+      } else {
+        message($('erreur-cal'), 'Pas de connexion : tu vois les dernières informations enregistrées.');
+      }
+    });
+  }
   // Appli installable (écran d'accueil)
   if ('serviceWorker' in navigator && location.protocol === 'https:') {
     navigator.serviceWorker.register('sw.js').catch(() => {});
